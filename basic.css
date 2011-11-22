@@ -1,0 +1,71 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	text-align: center;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Helvetica, Arial, sans-serif;
+	background-color: #eee;
+	color: #444;
+	font-size =75%;
+}
+
+li {
+	line-height: 1.8em; /* distanza tra una foto e l'altra */ 
+}
+
+h1, h2 {
+	font-family: "Trebuchet MS", Verdana, sans-serif;
+	margin: 0;
+	letter-spacing: -1px;
+}
+
+h1 {
+	font-size: 2.5em;
+}
+h2 {
+	font-size:1.5em;
+}
+
+div#Page {
+	height:500px;
+	background-color: #fff;
+	margin: 50px auto 0;
+	border-color: #ddd;
+	border-style: solid none;
+}
+
+div#Container {
+	padding: 20px;
+}
+
+div#Thumbs {
+	padding: 20px;
+}
+
+div#Footer {
+	clear: both;
+	font-size: 85%;
+	color: #777;
+	margin: 0 auto;
+	padding: 20px 0 30px;
+}
+
+ul.thumbs {
+	clear: both;
+	margin: 0;
+	padding: 0;
+}
+
+ul.thumbs li {
+	float: left;
+	padding: 0;
+	margin: 5px;
+	list-style: none;
+}
+
+ul.thumbs img {
+	border: none;
+	display: block;
+}
