@@ -11,10 +11,6 @@ body {
 	font-size =75%;
 }
 
-li {
-	line-height: 1.8em; /* distanza tra una foto e l'altra */ 
-}
-
 h1, h2 {
 	font-family: "Trebuchet MS", Verdana, sans-serif;
 	margin: 0;
@@ -29,19 +25,11 @@ h2 {
 }
 
 div#Page {
-	height:500px;
+	height:80%;
 	background-color: #fff;
-	margin: 50px auto 0;
+	margin: 3% auto 0;
 	border-color: #ddd;
 	border-style: solid none;
-}
-
-div#Container {
-	padding: 20px;
-}
-
-div#Thumbs {
-	padding: 20px;
 }
 
 div#Footer {
@@ -52,20 +40,31 @@ div#Footer {
 	padding: 20px 0 30px;
 }
 
-ul.thumbs {
-	clear: both;
-	margin: 0;
-	padding: 0;
+div#Container {
+	padding: 10px;
 }
 
-ul.thumbs li {
-	float: left;
-	padding: 0;
-	margin: 5px;
+div#Navcontainer
+{
+	border-top: solid 1px red;
+	border-bottom: solid 1px red;
+}
+
+div#Navcontainer ul
+{
 	list-style: none;
+	text-align: center;
+}
+div#Navcontainer ul li
+{
+	margin:5px;
+	display: inline;
 }
 
-ul.thumbs img {
+div#Navcontainer ul li a{
 	border: none;
-	display: block;
+}
+
+div#Navcontainer ul li a img {
+	border: none;
 }
