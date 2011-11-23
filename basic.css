@@ -44,27 +44,24 @@ div#Container {
 	padding: 10px;
 }
 
-div#Navcontainer
-{
-	border-top: solid 1px red;
-	border-bottom: solid 1px red;
+div#Navcontainer {
+	margin: 0 7% 0 5%;
 }
 
 div#Navcontainer ul
 {
 	list-style: none;
 	text-align: center;
+	margin: 0 auto;
 }
 div#Navcontainer ul li
 {
-	margin:5px;
+	margin: 5px;
 	display: inline;
 }
 
-div#Navcontainer ul li a{
-	border: none;
+div#Navcontainer ul li a img {
+	padding: 2px;
+	border: 2px solid #ccc;
 }
 
-div#Navcontainer ul li a img {
-	border: none;
-}
