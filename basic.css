@@ -60,6 +60,11 @@ div#Navcontainer ul li
 	display: inline;
 }
 
+div#Navcontainer ul a:hover img {
+	padding: 2px;
+	border: 2px solid #000;
+}
+
 div#Navcontainer ul li a img {
 	padding: 2px;
 	border: 2px solid #ccc;
