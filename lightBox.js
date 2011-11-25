@@ -171,6 +171,17 @@
 		}		
 		
 		//prepariamo l'esibizione dell'immagine	
+		function _set_image_to_view() {
+			$('#lightbox-loading').show();
+			if(settings.fixedNavigation){
+				$('#lightbox-image,#lightbox-container-image-data-box,#lightbox-image-details-currentNumber').hide();
+			} else {
+				// Hide some elements
+				$('#lightbox-image,#lightbox-nav,#lightbox-nav-btnPrev,#lightbox-nav-btnNext,#lightbox-container-image-data-box,#lightbox-image-details-currentNumber').hide();
+			}
+			
+			//pre-caricamento dell'immagine (??)
+			
 		
 		
 	};
