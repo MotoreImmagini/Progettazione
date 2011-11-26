@@ -5,34 +5,23 @@
 			
 			overlayBgColor: '#000',
 			overlayOpacity: 0.8,
-			//da rivedere
-			fixedNavigation: false,
 			
 			imageLoading: 'loading.gif',
 			imageBtnClose: 'close.gif',
 			imageBlank: 'blank.gif',
 			
-			//da rivedere
-			containerBorderSize: 10,
-			containerResizeSpeed: 400,
+			containerBorderSize: 10,	//bordo bianco intorno all'immagine
+			containerResizeSpeed: 400,	//il tempo che ci mette il riquadro contenente l'immagine ad assumere le dimensioni per contenere l'immagine
 			
-			//da rivedere
-			txtImage: 'Image',
-			txtOf: 'of',
-			
-			//da scoprire come uscire con esc invece che con c
-			keyToClose: 'c',
-			
-			//che roba è? dice "NON MODIFICARE"
+			//serve per immagazzinare le info delle immagini
 			imageArray: [],
-			activeImage: 0
+			activeImage: 0	//è un indice inizializzato a 0
 		}, settings);
 		
-		//da scoprire °°
-		var jQueryMatchedObj = this; // This, in this context, refer to jQuery object
+		//jQueryMatchedObj è in generale l'oggetto su cui viene invocato il plugin, in particolare noi dobbiamo invocarlo sulla galleria (che lui credo veda come un array)
+		var jQueryMatchedObj = this; // This, in this context, refer to jQuery object  the plugin was invoked on
 		/**
 		 * Initializing the plugin calling the start function
-		 *
 		 * @return boolean false
 		 */
 		function _initialize() {
@@ -44,18 +33,21 @@
 		//iniziamo il Plugin jQuery
 		function _start(objClicked,jQueryMatchedObj) {
 		
-		//questa serve a rendere invisibili alcuni elementi html (embed, object, select) che sennò in IE rompon le balle (se vogliamo farla più credibile forse è meglio non metterla)
+		//questa serve a rendere invisibili alcuni elementi html (embed, object, select) che sennò in IE rompon le balle 
 		$('embed, object, select').css({ 'visibility' : 'hidden' });
 		
-		//scoprirò poi che cosa fa 'sta funzione
+		//crea praticamente la pagina in cui è mostrata l'immagine
 		_set_interface();
 		
 		//svuota imageArray
 		settings.imageArray.length=0;
-		//azzera image active
+		//azzera activeImage
 		settings.activeImage=0;
 		
-		//qui è dove controlla se ci sono immagini e le infila in un Array, mi pare almeno, non mi ci perdo, lo riguardiamo appena sappiamo almeno come prenderle le immagini XP
+		/**controlla se jQueryMatchedObj è composto da una sola immagine o da più immagini. 
+		* con una sola immagine prende l'indirizzo e il titolo e li mette in imageArray
+		* con più di una immagine scandisce tutto il jQueryMatchedObj e via via mette indirizzo e titolo di ogni immagine in imageArray
+		*/
 		
 		// We have an image set? Or just an image? Let�s see it.
 			if ( jQueryMatchedObj.length == 1 ) {
@@ -66,6 +58,8 @@
 					settings.imageArray.push(new Array(jQueryMatchedObj[i].getAttribute('href'),jQueryMatchedObj[i].getAttribute('title')));
 				}
 			}
+			//per ogni coppia di elementi in imageArray controlla il primo elemento (l'indirizzo) e guarda se è uguale all'indirizzo dell'oggetto cliccato. Se è diverso passa all'elemento seguente
+			//praticamente cerca, in imageArray, l'immagine selezionata
 			while ( settings.imageArray[settings.activeImage][0] != objClicked.getAttribute('href') ) {
 				settings.activeImage++;
 			}
@@ -76,50 +70,52 @@
 
 /**questo è quello che infilo tra due secondi nella funzione _set_interface(), la cui funzione è inserire tutta questa pappardella nel tag body 
 *Praticamente è l'html della "pagina" che facciamo apparire sopra alla pagina.
-* PS: faccio copia-incolla perchè è lungo un sacco :D tolgo solo le referenze ai tasti che non ci sevono
+* PS: l'ho lasciato tutto, tanto è un commento, è giusto per avere un'idea
 
 
 		 * Create the jQuery lightBox plugin interface
 		 *
 		 * The HTML markup will be like that:
-			<div id="jquery-overlay"></div>
-			<div id="jquery-lightbox">
-				<div id="lightbox-container-image-box">
-					<div id="lightbox-container-image">
-						<img src="../fotos/XX.jpg" id="lightbox-image">
-						<div id="lightbox-nav">							
-							<a href="#" id="lightbox-nav-btnPrev"></a>
-							<a href="#" id="lightbox-nav-btnNext"></a>
-						</div>
-						<div id="lightbox-loading">
-							<a href="#" id="lightbox-loading-link">
-								<img src="../images/lightbox-ico-loading.gif">
-							</a>
-						</div>
-					</div>
-				</div>
-				<div id="lightbox-container-image-data-box">
-					<div id="lightbox-container-image-data">
-						<div id="lightbox-image-details">
-							<span id="lightbox-image-details-caption"></span>
-							<span id="lightbox-image-details-currentNumber"></span>
-						</div>
-						<div id="lightbox-secNav">
-							<a href="#" id="lightbox-secNav-btnClose">
-								<img src="../images/lightbox-btn-close.gif">
-							</a>
-						</div>
-					</div>
-				</div>
+<div id="jquery-overlay"></div>
+<div id="jquery-lightbox">
+	<div id="lightbox-container-image-box">
+		<div id="lightbox-container-image">
+			<img id="lightbox-image">
+			<div style="" id="lightbox-nav">
+				<a href="#" id="lightbox-nav-btnPrev"></a>
+				<a href="#" id="lightbox-nav-btnNext"></a>
 			</div>
+			<div id="lightbox-loading">
+				<a href="#" id="lightbox-loading-link">
+					<img src="' + settings.imageLoading + '">
+				</a>
+			</div>
+		</div>
+	</div>
+	<div id="lightbox-container-image-data-box">
+		<div id="lightbox-container-image-data">
+			<div id="lightbox-image-details">
+				<span id="lightbox-image-details-caption"></span>
+				<span id="lightbox-image-details-currentNumber"></span>
+			</div>
+			<div id="lightbox-secNav">
+				<a href="#" id="lightbox-secNav-btnClose">
+					<img src="' + settings.imageBtnClose + '">
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
 		 *
 		 */
 		
 		//passiamo a cose più interessanti, le funzioni usate prima
 		
+		
+		//in lightbox-image-details ci dovremo mettere i tag e la geolocalizzazione, quindi l'ho lasciato anche se per ora è vuoto
 		function _set_interface(){
-			//aggiunge il markup html (jquery-overlay lo definisco dopo e mi crea uno stile css)
-			$('body').append('<div id="jquery-overlay"></div><div id="jquery-lightbox"><div id="lightbox-container-image-box"><div id="lightbox-container-image"><img id="lightbox-image"><div style="" id="lightbox-nav"><a href="#" id="lightbox-nav-btnPrev"></a><a href="#" id="lightbox-nav-btnNext"></a></div><div id="lightbox-loading"><a href="#" id="lightbox-loading-link"><img src="' + settings.imageLoading + '"></a></div></div></div><div id="lightbox-container-image-data-box"><div id="lightbox-container-image-data"><div id="lightbox-image-details"><span id="lightbox-image-details-caption"></span><span id="lightbox-image-details-currentNumber"></span></div><div id="lightbox-secNav"><a href="#" id="lightbox-secNav-btnClose"><img src="' + settings.imageBtnClose + '"></a></div></div></div></div>');	
+			//aggiunge il markup html (jquery-overlay lo vediamo dopo e mi crea uno stile css)
+			$('body').append('<div id="jquery-overlay"></div><div id="jquery-lightbox"><div id="lightbox-container-image-box"><div id="lightbox-container-image"><img id="lightbox-image"><div id="lightbox-loading"><a href="#" id="lightbox-loading-link"><img src="' + settings.imageLoading + '"></a></div></div></div><div id="lightbox-container-image-data-box"><div id="lightbox-container-image-data"><div id="lightbox-image-details"></div><div id="lightbox-secNav"><a href="#" id="lightbox-secNav-btnClose"><img src="' + settings.imageBtnClose + '"></a></div></div></div></div>');	
 			
 			//ottiene la dimensione della pagina
 			var arrPageSizes = ___getPageSize();
@@ -131,7 +127,7 @@
 				height:				arrPageSizes[1]
 			}).fadeIn();
 			
-			//page scroll?????
+			//in virtù del fatto che non abbiamo scroll, presumo che non serva, ma eventualmente lo cancellerò più avanti
 			var arrPageScroll = ___getPageScroll();
 			
 			//questa serve a centrare l'immagine da aprire
@@ -173,14 +169,10 @@
 		//prepariamo l'esibizione dell'immagine	
 		function _set_image_to_view() {
 			$('#lightbox-loading').show();
-			if(settings.fixedNavigation){
-				$('#lightbox-image,#lightbox-container-image-data-box,#lightbox-image-details-currentNumber').hide();
-			} else {
-				// Hide some elements
-				$('#lightbox-image,#lightbox-nav,#lightbox-nav-btnPrev,#lightbox-nav-btnNext,#lightbox-container-image-data-box,#lightbox-image-details-currentNumber').hide();
-			}
+			$('#lightbox-image,#lightbox-container-image-data-box').hide();
 			
-			//pre-caricamento dell'immagine (1-non sono sicura che serva, 2-ho trovato metodi alternativi, 2-aspetto delle immagini con cui lavorare)
+			
+			//creo un oggetto immagine, gli assegno l'indirizzo dell'immagine da aprire e faccio il ridimenzionamento del boc che la conterrà
 			var objImagePreloader = new Image();
 			objImagePreloader.onload = function() {
 				$('#lightbox-image').attr('src',settings.imageArray[settings.activeImage][0]);
@@ -192,7 +184,7 @@
 			objImagePreloader.src = settings.imageArray[settings.activeImage][0];
 		};
 		
-		//Questo pezzo ci fa la "fighissima" animazione di ridimenzionamento quando apri l'immagine
+		//Questo pezzo ci fa la "fighissima" animazione di ridimensionamento quando apri l'immagine
 		function _resize_container_image_box(intImageWidth,intImageHeight) {
 			// Get current width and height
 			var intCurrentWidth = $('#lightbox-container-image-box').width();
@@ -213,88 +205,22 @@
 				}
 			} 
 			$('#lightbox-container-image-data-box').css({ width: intImageWidth });
-			$('#lightbox-nav-btnPrev,#lightbox-nav-btnNext').css({ height: intImageHeight + (settings.containerBorderSize * 2) });
 		};
 		
-		//Mostra l'immagine precaricata
+		//Mostra l'immagine 
 		function _show_image() {
 			$('#lightbox-loading').hide();
 			$('#lightbox-image').fadeIn(function() {
 				_show_image_data();
-				_set_navigation();
+				_enable_keyboard_navigation();
 			});
-			_preload_neighbor_images(); //questo in realtà non servirà visto che il next e prev li togliamo
+			
 		};
 		
-		//Mostra le descrizioni e il numero di immagine
+		//Mostrerà i tag 
 		function _show_image_data() {
 			$('#lightbox-container-image-data-box').slideDown('fast');
-			$('#lightbox-image-details-caption').hide();
-			if ( settings.imageArray[settings.activeImage][1] ) {
-				$('#lightbox-image-details-caption').html(settings.imageArray[settings.activeImage][1]).show();
-			}
-			// If we have a image set, display 'Image X of X'
-			if ( settings.imageArray.length > 1 ) {
-				$('#lightbox-image-details-currentNumber').html(settings.txtImage + ' ' + ( settings.activeImage + 1 ) + ' ' + settings.txtOf + ' ' + settings.imageArray.length).show();
-			}		
-		}
-		
-		//Mostra i pulsanti di navigazione e abilita la navigazione da tastiera
-		function _set_navigation() {
-			$('#lightbox-nav').show();
-
-			// Instead to define this configuration in CSS file, we define here. And it�s need to IE. Just.
-			$('#lightbox-nav-btnPrev,#lightbox-nav-btnNext').css({ 'background' : 'transparent url(' + settings.imageBlank + ') no-repeat' });
-			
-			// Show the prev button, if not the first image in set
-			if ( settings.activeImage != 0 ) {
-				if ( settings.fixedNavigation ) {
-					$('#lightbox-nav-btnPrev').css({ 'background' : 'url(' + settings.imageBtnPrev + ') left 15% no-repeat' })
-						.unbind()
-						.bind('click',function() {
-							settings.activeImage = settings.activeImage - 1;
-							_set_image_to_view();
-							return false;
-						});
-				} else {
-					// Show the images button for Next buttons
-					$('#lightbox-nav-btnPrev').unbind().hover(function() {
-						$(this).css({ 'background' : 'url(' + settings.imageBtnPrev + ') left 15% no-repeat' });
-					},function() {
-						$(this).css({ 'background' : 'transparent url(' + settings.imageBlank + ') no-repeat' });
-					}).show().bind('click',function() {
-						settings.activeImage = settings.activeImage - 1;
-						_set_image_to_view();
-						return false;
-					});
-				}
-			}
-			
-			// Show the next button, if not the last image in set
-			if ( settings.activeImage != ( settings.imageArray.length -1 ) ) {
-				if ( settings.fixedNavigation ) {
-					$('#lightbox-nav-btnNext').css({ 'background' : 'url(' + settings.imageBtnNext + ') right 15% no-repeat' })
-						.unbind()
-						.bind('click',function() {
-							settings.activeImage = settings.activeImage + 1;
-							_set_image_to_view();
-							return false;
-						});
-				} else {
-					// Show the images button for Next buttons
-					$('#lightbox-nav-btnNext').unbind().hover(function() {
-						$(this).css({ 'background' : 'url(' + settings.imageBtnNext + ') right 15% no-repeat' });
-					},function() {
-						$(this).css({ 'background' : 'transparent url(' + settings.imageBlank + ') no-repeat' });
-					}).show().bind('click',function() {
-						settings.activeImage = settings.activeImage + 1;
-						_set_image_to_view();
-						return false;
-					});
-				}
-			}
-			// Enable keyboard navigation
-			_enable_keyboard_navigation();
+				
 		}
 		
 		//la funzione per abilitare la navigazione da tastiera
@@ -309,7 +235,7 @@
 			$(document).unbind();
 		}
 		
-		//definizione di _keyboard_action che ci dice cosa fanno i tasti (si dovrebbe poter togliere i keytoNext/prev)
+		//definizione di _keyboard_action che ci dice cosa fanno i tasti (la prima parte mi è abbastanza oscura in reatà)
 		function _keyboard_action(objEvent) {
 			// To ie
 			if ( objEvent == null ) {
@@ -323,39 +249,10 @@
 			// Get the key in lower case form
 			key = String.fromCharCode(keycode).toLowerCase();
 			// Verify the keys to close the ligthBox
-			if ( ( key == settings.keyToClose ) || ( key == 'x' ) || ( keycode == escapeKey ) ) {
+			if ( keycode == 27  ) {
 				_finish();
 			}
-			// Verify the key to show the previous image (freccia a sinistra)
-			if ( ( key == settings.keyToPrev ) || ( keycode == 37 ) ) {
-				// If we�re not showing the first image, call the previous
-				if ( settings.activeImage != 0 ) {
-					settings.activeImage = settings.activeImage - 1;
-					_set_image_to_view();
-					_disable_keyboard_navigation();
-				}
-			}
-			// Verify the key to show the next image (freccia a destra)
-			if ( ( key == settings.keyToNext ) || ( keycode == 39 ) ) {
-				// If we�re not showing the last image, call the next
-				if ( settings.activeImage != ( settings.imageArray.length - 1 ) ) {
-					settings.activeImage = settings.activeImage + 1;
-					_set_image_to_view();
-					_disable_keyboard_navigation();
-				}
-			}
-		}
-		
-		//precarica l'immagine precedente e successiva a quella mostrata
-		function _preload_neighbor_images() {
-			if ( (settings.imageArray.length -1) > settings.activeImage ) {
-				objNext = new Image();
-				objNext.src = settings.imageArray[settings.activeImage + 1][0];
-			}
-			if ( settings.activeImage > 0 ) {
-				objPrev = new Image();
-				objPrev.src = settings.imageArray[settings.activeImage -1][0];
-			}
+			
 		}
 		
 		//fa chiudere il plugin eliminando quindi il markup html
@@ -427,7 +324,7 @@
 			return arrayPageScroll;
 		};
 		
-		//funzione pausa, mi è sfuggita, non so a cosa serva
+		//funzione pausa, anche se non mi è chiara l'utilità
 		function ___pause(ms) {
 			var date = new Date(); 
 			curDate = null;
@@ -435,6 +332,7 @@
 			while ( curDate - date < ms);
 		 };
 		 
+		 //questa è un po' una finezza, ma è buona norma far così con i plugin
 		 // Return the jQuery object for chaining. The unbind method is used to avoid click conflict when the plugin is called more than once
 		return this.unbind('click').click(_initialize);
 	};
