@@ -16,7 +16,7 @@ $(document).ready(function(){
        
        	 		// Here's where we piece together the HTML
      	  		htmlString += '<li><a href="' + item.link + '" target="_blank">';
-      	  		htmlString += '<img title="' + item.title + '" src="' + item.media.m + '"width="15%"';
+      	  		htmlString += '<img title="' + item.title + '" src="' + item.media.m + '"height="120px"';
       	  		htmlString += '" alt="'; htmlString += item.title + '" />';
       	  		htmlString += '</a></li>';
       	  	}
