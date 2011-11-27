@@ -174,13 +174,14 @@
 			
 			//creo un oggetto immagine, gli assegno l'indirizzo dell'immagine da aprire e faccio il ridimenzionamento del boc che la conterrà
 			var objImagePreloader = new Image();
-			objImagePreloader.onload = function() {
+			
+			jQuery(objImagePreloader).bind("load", function(){
 				$('#lightbox-image').attr('src',settings.imageArray[settings.activeImage][0]);
 				// Perfomance an effect in the image container resizing it
 				_resize_container_image_box(objImagePreloader.width,objImagePreloader.height);
 				//	clear onLoad, IE behaves irratically with animated gifs otherwise
-				objImagePreloader.onload=function(){};
-			};
+				jQuery(objImagePreloader).bind("load", function(){});
+			});
 			objImagePreloader.src = settings.imageArray[settings.activeImage][0];
 		};
 		

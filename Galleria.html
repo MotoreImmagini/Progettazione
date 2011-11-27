@@ -7,6 +7,8 @@
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="jsonJquery.js"></script>
 		<script type="text/javascript" src="lightBox.js"></script>
+		<script type="text/javascript" src="caricaImm.js"></script>
+		
 		
 		<!-- lancia il plugin, non mi è chiaro perchè aggiunga una a accanto a #gallery, ma senza l'immagine da aprire non si carica -->
 		<script type="text/javascript">
@@ -14,14 +16,22 @@
   	    	  $('#gallery a').lightBox();
   	  		});
   	  	</script>
-  	  
+  	  	
+  	  	<script>
+  	  	jQuery(document).ready(function(){
+  	  		$('#Navcontainer,#gallery').find('img').caricaImm();
+  	  	});
+  	  	</script>
+  	  	
+  
 		<!-- questo poi andrà levato, è il css della galleria che ho aggiunto -->
 	<style type="text/css">
 	/* jQuery lightBox plugin - Gallery style */
 	#gallery {
+		margin-left: 50px; 
 		background-color: #444;
 		padding: 10px;
-		width: 520px;
+		width: 1100px;
 	}
 	#gallery ul { list-style: none; }
 	#gallery ul li { display: inline; }
@@ -36,10 +46,10 @@
 	}
 	#gallery ul a:hover { color: #fff; }
 	</style>
-		
 
 	</head>
 	<body>
+		
 		<div id="Page">
 			<div id="Container">
 				<h1>Galleria d'immagini</h1>
@@ -51,27 +61,27 @@
    				 <ul>
         			<li>
             			<a href="photos/image1.jpg" title="Utilize a flexibilidade dos seletores da jQuery e crie um grupo de imagens como desejar. $('#gallery').lightBox();">
-                			<img src="photos/thumb_image1.jpg" width="72" height="72" alt="" />
+                			<img src="photos/thumb_image1.jpg" width="150" height="150" alt="" />
             			</a>
         			</li>
 			        <li>
 			            <a href="photos/image2.jpg" title="Utilize a flexibilidade dos seletores da jQuery e crie um grupo de imagens como desejar. $('#gallery a').lightBox();">
-			                <img src="photos/thumb_image2.jpg" width="72" height="72" alt="" />
+			                <img src="photos/thumb_image2.jpg" width="150" height="150" alt="" />
 			            </a>
 			        </li>
 			        <li>
 			            <a href="photos/image3.jpg" title="Utilize a flexibilidade dos seletores da jQuery e crie um grupo de imagens como desejar. $('#gallery a').lightBox();">
-			                <img src="photos/thumb_image3.jpg" width="72" height="72" alt="" />
+			                <img src="photos/thumb_image3.jpg" width="150" height="150" alt="" />
 			            </a>
 			        </li>
 			        <li>
 			            <a href="photos/image4.jpg" title="Utilize a flexibilidade dos seletores da jQuery e crie um grupo de imagens como desejar. $('#gallery a').lightBox();">
-			                <img src="photos/thumb_image4.jpg" width="72" height="72" alt="" />
+			                <img src="photos/thumb_image4.jpg" width="150" height="150" alt="" />
 			            </a>
 			        </li>
 			        <li>
 			            <a href="photos/image5.jpg" title="Utilize a flexibilidade dos seletores da jQuery e crie um grupo de imagens como desejar. $('#gallery a').lightBox();">
-			                <img src="photos/thumb_image5.jpg" width="72" height="72" alt="" />
+			                <img src="photos/thumb_image5.jpg" width="150" height="150" alt="" />
 			            </a>
 			        </li>
 			    </ul>
