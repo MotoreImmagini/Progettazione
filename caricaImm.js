@@ -1,6 +1,12 @@
 (function($){
-	$.fn.caricaImm = function(intWidth, intHeight){
+	$.fn.caricaImm = function(){
 		var dimensioni= [];
+		
+		$('#gallery, #Navcontainer').find('img').each(function() {
+				
+		  
+		});
+		
 		//devo iterare e mettere w e h per ogni immagine in un array
 		var intCurrentWidth = $('#contenitore').width();
 		var intCurrentHeight = $('#contenitore').height();
