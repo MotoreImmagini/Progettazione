@@ -15,7 +15,7 @@ $(document).ready(function(){
     		if (iCount > iStart && iCount < (iStart + 13)) {
        
        	 		// Here's where we piece together the HTML
-     	  		htmlString += '<li><div id="contenitore"><div id="imageBox>"<a href="' + item.link + '" target="_blank">';
+     	  		htmlString += '<li><div id="contenitore"><div id="imageBox"><a href="' + item.link + '" target="_blank">';
       	  		htmlString += '<img title="' + item.title + '" src="' + item.media.m + '"height="120px"';
       	  		htmlString += '" alt="'; htmlString += item.title + '" />';
       	  		htmlString += '</a></div></div></li>';
