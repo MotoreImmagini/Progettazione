@@ -26,6 +26,8 @@ $(document).ready(function(){
    
     // Pop our HTML in the #images DIV
     $('#lista').html(htmlString);
+    $('#lista li').hide();
+	$('#lista li').show(2000);
    
     // Close down the JSON function call
 	}
