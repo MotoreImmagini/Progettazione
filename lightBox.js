@@ -1,6 +1,7 @@
 (function($){
 	$.fn.lightBox = function(settings){
 		
+		
 		settings= jQuery.extend({
 			
 			overlayBgColor: '#000',
@@ -15,7 +16,7 @@
 			
 			//serve per immagazzinare le info delle immagini
 			imageArray: [],
-			activeImage: 0	//è un indice inizializzato a 0
+			
 		}, settings);
 		
 		//jQueryMatchedObj è in generale l'oggetto su cui viene invocato il plugin, in particolare noi dobbiamo invocarlo sulla galleria (che lui credo veda come un array)
@@ -25,13 +26,13 @@
 		 * @return boolean false
 		 */
 		function _initialize() {
-			_start(this,jQueryMatchedObj); // This, in this context, refer to object (link) which the user have clicked
+			_start(this); // This, in this context, refer to object (link) which the user have clicked
 			return false; // Avoid the browser following the link
 		};
 		
 		
 		//iniziamo il Plugin jQuery
-		function _start(objClicked,jQueryMatchedObj) {
+		function _start(objClicked) {
 		
 		//questa serve a rendere invisibili alcuni elementi html (embed, object, select) che sennò in IE rompon le balle 
 		$('embed, object, select').css({ 'visibility' : 'hidden' });
@@ -41,8 +42,7 @@
 		
 		//svuota imageArray
 		settings.imageArray.length=0;
-		//azzera activeImage
-		settings.activeImage=0;
+
 		
 		/**controlla se jQueryMatchedObj è composto da una sola immagine o da più immagini. 
 		* con una sola immagine prende l'indirizzo e il titolo e li mette in imageArray
@@ -50,20 +50,10 @@
 		*/
 		
 		// We have an image set? Or just an image? Let�s see it.
-			if ( jQueryMatchedObj.length == 1 ) {
-				settings.imageArray.push(new Array(objClicked.getAttribute('href'),objClicked.getAttribute('title')));
-			} else {
-				// Add an Array (as many as we have), with href and title atributes, inside the Array that storage the images references		
-				for ( var i = 0; i < jQueryMatchedObj.length; i++ ) {
-					settings.imageArray.push(new Array(jQueryMatchedObj[i].getAttribute('href'),jQueryMatchedObj[i].getAttribute('title')));
-				}
-			}
-			//per ogni coppia di elementi in imageArray controlla il primo elemento (l'indirizzo) e guarda se è uguale all'indirizzo dell'oggetto cliccato. Se è diverso passa all'elemento seguente
-			//praticamente cerca, in imageArray, l'immagine selezionata
-			while ( settings.imageArray[settings.activeImage][0] != objClicked.getAttribute('href') ) {
-				settings.activeImage++;
-			}
+			settings.imageArray.push(objClicked.getAttribute('href'));
+			settings.imageArray.push(objClicked.getAttribute('title'));
 			
+						
 			//funzione che prepara le immagini alla visualizzazione
 			_set_image_to_view();
 		};
@@ -176,13 +166,13 @@
 			var objImagePreloader = new Image();
 			
 			jQuery(objImagePreloader).bind("load", function(){
-				$('#lightbox-image').attr('src',settings.imageArray[settings.activeImage][0]);
+				$('#lightbox-image').attr('src',settings.imageArray[0]);
 				// Perfomance an effect in the image container resizing it
 				_resize_container_image_box(objImagePreloader.width,objImagePreloader.height);
 				//	clear onLoad, IE behaves irratically with animated gifs otherwise
 				jQuery(objImagePreloader).bind("load", function(){});
 			});
-			objImagePreloader.src = settings.imageArray[settings.activeImage][0];
+			objImagePreloader.src = settings.imageArray[0];
 		};
 		
 		//Questo pezzo ci fa la "fighissima" animazione di ridimensionamento quando apri l'immagine
@@ -336,5 +326,6 @@
 		 //questa è un po' una finezza, ma è buona norma far così con i plugin
 		 // Return the jQuery object for chaining. The unbind method is used to avoid click conflict when the plugin is called more than once
 		return this.unbind('click').click(_initialize);
+	
 	};
 })(jQuery);
