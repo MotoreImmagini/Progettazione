@@ -188,8 +188,9 @@
 			var intDiffH = intCurrentHeight - intHeight;
 		
 			// Perfomance the effect
+
 			$('#lightbox-container-image-box').animate({ width: intWidth, height: intHeight },settings.containerResizeSpeed,function() { _show_image(); });
-			
+
 			if ( ( intDiffW == 0 ) && ( intDiffH == 0 ) ) {
 				if ( $.browser.msie ) {
 					___pause(250);
@@ -197,6 +198,7 @@
 					___pause(100);	
 				}
 			} 
+
 			$('#lightbox-container-image-data-box').css({ width: intImageWidth });
 		};
 		
@@ -204,10 +206,10 @@
 		function _show_image() {
 			$('#lightbox-loading').hide();
 
+
 			$('#lightbox-image').fadeIn(function() {
 				$('#lightbox-container-image-data-box').slideDown('fast');
 			});
-
 		};
 		
 		//fa chiudere il plugin eliminando quindi il markup html
