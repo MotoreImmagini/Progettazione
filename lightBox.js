@@ -1,7 +1,6 @@
 (function($){
 	$.fn.lightBox = function(settings){
 		
-		
 		settings= jQuery.extend({
 			
 			overlayBgColor: '#000',
@@ -132,7 +131,7 @@
 			});
 			
 			//questa è per chiudere anche se clicchi sull'immagine di loading o sul tasto close
-			$('#lightbox-loading-link,#lightbox-secNav-btnClose').click(function() {
+			$('#lightbox-secNav-btnClose').click(function() {
 				_finish();
 				return false;
 			});
@@ -188,13 +187,6 @@
 			var intDiffH = intCurrentHeight - intHeight;
 			// Perfomance the effect
 			$('#lightbox-container-image-box').animate({ width: intWidth, height: intHeight },settings.containerResizeSpeed,function() { _show_image(); });
-			if ( ( intDiffW == 0 ) && ( intDiffH == 0 ) ) {
-				if ( $.browser.msie ) {
-					___pause(250);
-				} else {
-					___pause(100);	
-				}
-			} 
 			$('#lightbox-container-image-data-box').css({ width: intImageWidth });
 		};
 		
@@ -202,49 +194,10 @@
 		function _show_image() {
 			$('#lightbox-loading').hide();
 			$('#lightbox-image').fadeIn(function() {
-				_show_image_data();
-				_enable_keyboard_navigation();
+				$('#lightbox-container-image-data-box').slideDown('fast');
 			});
 			
 		};
-		
-		//Mostrerà i tag 
-		function _show_image_data() {
-			$('#lightbox-container-image-data-box').slideDown('fast');
-				
-		}
-		
-		//la funzione per abilitare la navigazione da tastiera
-		function _enable_keyboard_navigation() {
-			$(document).keydown(function(objEvent) {
-				_keyboard_action(objEvent);
-			});
-		}
-		
-		//disabilita la navigazione da tastiera
-		function _disable_keyboard_navigation() {
-			$(document).unbind();
-		}
-		
-		//definizione di _keyboard_action che ci dice cosa fanno i tasti (la prima parte mi è abbastanza oscura in reatà)
-		function _keyboard_action(objEvent) {
-			// To ie
-			if ( objEvent == null ) {
-				keycode = event.keyCode;
-				escapeKey = 27;
-			// To Mozilla
-			} else {
-				keycode = objEvent.keyCode;
-				escapeKey = objEvent.DOM_VK_ESCAPE;
-			}
-			// Get the key in lower case form
-			key = String.fromCharCode(keycode).toLowerCase();
-			// Verify the keys to close the ligthBox
-			if ( keycode == 27  ) {
-				_finish();
-			}
-			
-		}
 		
 		//fa chiudere il plugin eliminando quindi il markup html
 		function _finish() {
@@ -314,14 +267,6 @@
 			arrayPageScroll = new Array(xScroll,yScroll);
 			return arrayPageScroll;
 		};
-		
-		//funzione pausa, anche se non mi è chiara l'utilità
-		function ___pause(ms) {
-			var date = new Date(); 
-			curDate = null;
-			do { var curDate = new Date(); }
-			while ( curDate - date < ms);
-		 };
 		 
 		 //questa è un po' una finezza, ma è buona norma far così con i plugin
 		 // Return the jQuery object for chaining. The unbind method is used to avoid click conflict when the plugin is called more than once
