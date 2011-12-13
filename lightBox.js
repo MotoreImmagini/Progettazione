@@ -16,6 +16,7 @@
 			//serve per immagazzinare le info delle immagini
 			imageArray: [],
 			
+			
 		}, settings);
 		
 		//jQueryMatchedObj è in generale l'oggetto su cui viene invocato il plugin, in particolare noi dobbiamo invocarlo sulla galleria (che lui credo veda come un array)

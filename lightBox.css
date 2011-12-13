@@ -20,11 +20,17 @@
 #lightbox-container-image-box {
 	position: relative;
 	background-color: #fff;
-	width: 250px;
-	height: 250px;
-	margin: 0 auto;
+	width: 50px;
+	height: 50px;
+	margin:0 auto;
+	
 }
-#lightbox-container-image { padding: 10px; }
+#lightbox-container-image { 
+	padding: 10px; 
+	margin: auto;
+}
+
+
 #lightbox-loading {
 	position: absolute;
 	top: 40%;
