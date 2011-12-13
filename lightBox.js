@@ -105,7 +105,7 @@
 		//in lightbox-image-details ci dovremo mettere i tag e la geolocalizzazione, quindi l'ho lasciato anche se per ora è vuoto
 		function _set_interface(){
 			//aggiunge il markup html (jquery-overlay lo vediamo dopo e mi crea uno stile css)
-			$('body').append('<div id="jquery-overlay"></div><div id="jquery-lightbox"><div id="lightbox-container-image-box"><div id="lightbox-container-image"><img id="lightbox-image"><div id="lightbox-loading"><a href="#" id="lightbox-loading-link"><img src="' + settings.imageLoading + '"></a></div></div></div><div id="lightbox-container-image-data-box"><div id="lightbox-container-image-data"><div id="lightbox-image-details"></div><div id="lightbox-secNav"><a href="#" id="lightbox-secNav-btnClose"><img src="' + settings.imageBtnClose + '"></a></div></div></div></div>');	
+			$('body').append('<div id="jquery-overlay"></div><div id="jquery-lightbox"><div id="lightbox-container-image-box"><div id="lightbox-container-image"><img id="lightbox-image"></div></div><div id="lightbox-container-image-data-box"><div id="lightbox-container-image-data"><div id="lightbox-image-details"></div><div id="lightbox-secNav"><a href="#" id="lightbox-secNav-btnClose"><img src="' + settings.imageBtnClose + '"></a></div></div></div></div>');	
 			
 			//ottiene la dimensione della pagina
 			var arrPageSizes = ___getPageSize();
@@ -158,7 +158,7 @@
 		
 		//prepariamo l'esibizione dell'immagine	
 		function _set_image_to_view() {
-			$('#lightbox-loading').show();
+		
 			$('#lightbox-image,#lightbox-container-image-data-box').hide();
 			
 			
@@ -186,18 +186,28 @@
 			// Diferences
 			var intDiffW = intCurrentWidth - intWidth;
 			var intDiffH = intCurrentHeight - intHeight;
+		
 			// Perfomance the effect
 			$('#lightbox-container-image-box').animate({ width: intWidth, height: intHeight },settings.containerResizeSpeed,function() { _show_image(); });
+			
+			if ( ( intDiffW == 0 ) && ( intDiffH == 0 ) ) {
+				if ( $.browser.msie ) {
+					___pause(250);
+				} else {
+					___pause(100);	
+				}
+			} 
 			$('#lightbox-container-image-data-box').css({ width: intImageWidth });
 		};
 		
 		//Mostra l'immagine 
 		function _show_image() {
 			$('#lightbox-loading').hide();
+
 			$('#lightbox-image').fadeIn(function() {
 				$('#lightbox-container-image-data-box').slideDown('fast');
 			});
-			
+
 		};
 		
 		//fa chiudere il plugin eliminando quindi il markup html
