@@ -12,7 +12,7 @@ $(document).ready(function(){
 		    
 		     if (iCount > iStart && iCount < (iStart + 13)) {
 		       
-		       htmlString += '<li><a href="' + item.link + '" target="_blank">';
+		       htmlString += '<li><a href="' + item.media.m + '" target="_blank">';
 		       htmlString += '<img title="' + item.title + '" src="' + item.media.m + '"height="120px"';
 		       htmlString += '" alt="'; htmlString += item.title + '" />';
 		       htmlString += '</a></li>';
