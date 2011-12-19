@@ -2,20 +2,26 @@
 	<HEAD>
 		<TITLE> Motore di ricerca di immagini || search by tag, color and similarity </TITLE>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		
 		<script type="text/javascript" src="jsonJquery.js"></script>
+		<script type="text/javascript" src="jscolor/jscolor.js"></script>
+		
 		<link rel="stylesheet" href="basic.css" type="text/css" />
+ 
 	</HEAD>
 	<BODY>
-		<div id="pagina">
-			<div id="intestazione">
-   				<h1> Motore di ricerca di immagini </h1>
+		<div id="intestazione">
+   			<h1> Motore di ricerca di immagini </h1>
+		</div>
+		<div id="contenuto">
+   			<div id="navcontainer">
+				<ul id="lista"></ul>
 			</div>
-			<div id="contenuto">
-   				<div id="navcontainer">
-					<ul id="lista"></ul>
-				</div>
+			<div id="container">
+				<div id="tag-container"></div>
+				<div id="drop-container"></div>
+				<div id="color-container"></div>
 			</div>
-			<div id="footer"></div>
 		</div>
 	</BODY>
 </HTML>
