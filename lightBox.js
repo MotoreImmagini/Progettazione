@@ -151,6 +151,14 @@
 			
 			$('#funzioni').append('<div id="condividi"><a href="' + facebook +'" id="facebook" ><img src="facebook.jpg"  alt="Share on facebook" width="32" height="32" /></a><a href="'+twitter+'" id="twitter"><img src="twitter.jpg"  alt="Share on Twitter" width="32" height="32" /></a></div>');
 			$('#scatola-contenitore-dati').slideDown('fast');
+			$('#condividi a').each(function(){
+				$(this).click(function(event){
+					event.preventDefault();
+					event.stopPropagation();
+					window.open(this.href, '_blank');
+					return false;
+				});
+			});
 		};
 		
 		function _fine(){
