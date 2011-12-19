@@ -65,7 +65,7 @@
 		 */
 		
 		function _crea_interfaccia(){
-			$('body').append('<div id="overlay"></div><div id="lightbox"><div id="scatola-contenitore-immagine"><div id="contenitore-immagine"><img id="immagine"><div id="caricamento"><a href="#" id="immagine-caricamento"><img src="' + opzioni.immagineCaricamento + '"></a></div></div></div><div id="scatola-contenitore-dati"><div id="contenitore-dati"><div id="funzioni"><div id="condividi"><ul><li><a class="facebook" href="http://www.facebook.com/sharer.php?u=http://yourwebsite.com"  title="Share this on Facebook" >Facebook</a></li><li><a class="twitter" href="http://twitter.com/home?status=Your Website Title- http://yourwebsite.com@TwitterUserName" title="Tweet This Page" >Twitter</a></li></ul></div></div><div id="contenitore-chiusura"><a href="#" id="chiusura"><img src="' + opzioni.immagineChiusura + '"></a></div></div></div></div>');
+			$('body').append('<div id="overlay"></div><div id="lightbox"><div id="scatola-contenitore-immagine"><div id="contenitore-immagine"><img id="immagine"><div id="caricamento"><a href="#" id="immagine-caricamento"><img src="' + opzioni.immagineCaricamento + '"></a></div></div></div><div id="scatola-contenitore-dati"><div id="contenitore-dati"><div id="funzioni"></div><div id="contenitore-chiusura"><a href="#" id="chiusura"><img src="' + opzioni.immagineChiusura + '"></a></div></div></div></div>');
 
 			var arrDimensionePagina = _getDimensionePagina();
 			
