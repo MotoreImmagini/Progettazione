@@ -65,6 +65,7 @@
 		 */
 		
 		function _crea_interfaccia(){
+
 			$('body').append('<div id="overlay"></div><div id="lightbox"><div id="scatola-contenitore-immagine"><div id="contenitore-immagine"><img id="immagine"><div id="caricamento"><a href="#" id="immagine-caricamento"><img src="' + opzioni.immagineCaricamento + '"></a></div></div></div><div id="scatola-contenitore-dati"><div id="contenitore-dati"><div id="funzioni"></div><div id="contenitore-chiusura"><a href="#" id="chiusura"><img src="' + opzioni.immagineChiusura + '"></a></div></div></div></div>');
 
 			var arrDimensionePagina = _getDimensionePagina();
@@ -137,8 +138,19 @@
 			$('#caricamento').hide();
 			
 			$('#immagine').fadeIn(function(){
-				$('#scatola-contenitore-dati').slideDown('fast');
+				_mostra_dati();
 			});
+		};
+		
+		function _mostra_dati(){
+			
+			var url=$('#immagine').attr('src');
+			
+			var facebook='http://www.facebook.com/sharer.php?u='+url;
+			var twitter='http://twitter.com/home?status=ImmagineDalProgettoDiPPM%20'+url;;			
+			
+			$('#funzioni').append('<div id="condividi"><a href="' + facebook +'" id="facebook" ><img src="facebook.jpg"  alt="Share on facebook" width="32" height="32" /></a><a href="'+twitter+'" id="twitter"><img src="twitter.jpg"  alt="Share on Twitter" width="32" height="32" /></a></div>');
+			$('#scatola-contenitore-dati').slideDown('fast');
 		};
 		
 		function _fine(){

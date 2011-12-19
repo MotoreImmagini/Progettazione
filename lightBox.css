@@ -58,6 +58,13 @@
 	text-align: left; 
 }	
 
+#condividi a{
+	float: left;
+	width:32px;
+	margin:3px 2px 2px 2px; 
+	padding:0;
+}
+
 #chiusura {
 	width: 66px; 
 	float: right;
