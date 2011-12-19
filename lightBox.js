@@ -65,21 +65,21 @@
 		 */
 		
 		function _crea_interfaccia(){
-			$('body').append('<div id="overlay"></div><div id="lightbox"><div id="scatola-contenitore-immagine"><div id="contenitore-immagine"><img id="immagine"><div id="caricamento"><a href="#" id="immagine-caricamento"><img src="' + opzioni.immagineCaricamento + '"></a></div></div></div><div id="scatola-contenitore-dati"><div id="contenitore-dati"><div id="funzioni"></div><div id="contenitore-chiusura"><a href="#" id="chiusura"><img src="' + opzioni.immagineChiusura + '"></a></div></div></div></div>');
+			$('body').append('<div id="overlay"></div><div id="lightbox"><div id="scatola-contenitore-immagine"><div id="contenitore-immagine"><img id="immagine"><div id="caricamento"><a href="#" id="immagine-caricamento"><img src="' + opzioni.immagineCaricamento + '"></a></div></div></div><div id="scatola-contenitore-dati"><div id="contenitore-dati"><div id="funzioni"><div id="condividi"><ul><li><a class="facebook" href="http://www.facebook.com/sharer.php?u=http://yourwebsite.com"  title="Share this on Facebook" >Facebook</a></li><li><a class="twitter" href="http://twitter.com/home?status=Your Website Title- http://yourwebsite.com@TwitterUserName" title="Tweet This Page" >Twitter</a></li></ul></div></div><div id="contenitore-chiusura"><a href="#" id="chiusura"><img src="' + opzioni.immagineChiusura + '"></a></div></div></div></div>');
 
-			var arrPageSizes = _getPageSize();
+			var arrDimensionePagina = _getDimensionePagina();
 			
 			$('#overlay').css({
 				backgroundColor: 	opzioni.coloreOverlay,
 				opacity:			opzioni.opacitaOverlay,
-				width:				arrPageSizes[0],
-				height:				arrPageSizes[1]
+				width:				arrDimensionePagina[0],
+				height:				arrDimensionePagina[1]
 			}).fadeIn();
 			
 			
 			
 			$('#lightbox').css({
-				top:	arrPageSizes[1] / 10,
+				top:	arrDimensionePagina[1] / 10,
 			}).show();
 			
 			$('#overlay,#lightbox').click(function() {
@@ -93,17 +93,17 @@
 			//se viene ridimensionata la finestra
 			$(window).resize(function() {
 				// Get page sizes
-				var arrPageSizes = _getPageSize();
+				var arrDimensionePagina = _getDimensionePagina();
 				// Style overlay and show it
 				$('#overlay').css({
-					width:		arrPageSizes[0],
-					height:		arrPageSizes[1]
+					width:		arrDimensionePagina[0],
+					height:		arrDimensionePagina[1]
 				});
 				// Get page scroll
 				
 				// Calculate top and left offset for the jquery-lightbox div object and show it
 				$('#lightbox').css({
-					top:	arrPageSizes[1] / 10
+					top:	arrDimensionePagina[1] / 10
 				});
 			});
 			
@@ -146,15 +146,28 @@
 			$('#overlay').fadeOut(function(){$('#overlay').remove();});
 		};	
 	
-		function _getPageSize() {
-			var pageWidth, pageHeight;
+		function _getDimensionePagina() {
 			
-			pageWidth = document.body.scrollWidth;
-			pageHeight = document.body.scrollHeight;
+			var xScroll = document.body.scrollWidth;
+			var yScroll = document.body.scrollHeight;
+			
+			var	larghezzaFinestra = window.innerWidth;
+			var	altezzaFinestra = window.innerHeight;
+			
+			if(yScroll < altezzaFinestra){
+				altezzaPagina = altezzaFinestra;
+			} else { 
+				altezzaPagina = yScroll;
+			}
+			if(xScroll < larghezzaFinestra){	
+				larghezzaPagina = xScroll;		
+			} else {
+				larghezzaPagina = larghezzaFinestra;
+			}
 			
 
-			arrayPageSize = new Array(pageWidth,pageHeight);
-			return arrayPageSize;
+			arrayDimensionePagina = new Array(larghezzaPagina, altezzaPagina);
+			return arrayDimensionePagina;
 		};
 		
 		
