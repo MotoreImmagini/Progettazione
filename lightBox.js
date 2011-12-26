@@ -24,6 +24,8 @@
 		};
 		
 		function _start(oggettoCliccato){
+			//per evitare conflitti con l'overlay in IE
+			$('embed, object, select').css({ 'visibility' : 'hidden' });
 			
 			//crea la pagina in cui è mostrata l'immagine
 			_crea_interfaccia();
@@ -149,6 +151,18 @@
 			var facebook='http://www.facebook.com/sharer.php?u='+url;
 			var twitter='http://twitter.com/home?status=ImmagineDalProgettoDiPPM%20'+url;;			
 			
+			/**da appendere al div #funzioni
+
+			<div id="condividi">
+				<a href="' + facebook +'" id="facebook" >
+					<img src="facebook.jpg"  alt="Share on facebook" width="32" height="32" />
+				</a>
+				<a href="'+twitter+'" id="twitter">
+					<img src="twitter.jpg"  alt="Share on Twitter" width="32" height="32" />
+				</a>
+			</div>
+			*/
+			
 			$('#funzioni').append('<div id="condividi"><a href="' + facebook +'" id="facebook" ><img src="facebook.jpg"  alt="Share on facebook" width="32" height="32" /></a><a href="'+twitter+'" id="twitter"><img src="twitter.jpg"  alt="Share on Twitter" width="32" height="32" /></a></div>');
 			$('#scatola-contenitore-dati').slideDown('fast');
 			$('#condividi a').each(function(){
@@ -164,15 +178,40 @@
 		function _fine(){
 			$('#lightbox').remove();
 			$('#overlay').fadeOut(function(){$('#overlay').remove();});
+			
+			$('embed, object, select').css({ 'visibility' : 'visible' });
 		};	
 	
+		
 		function _getDimensionePagina() {
 			
-			var xScroll = document.body.scrollWidth;
-			var yScroll = document.body.scrollHeight;
+			var xScroll, yScroll;
+			if (window.innerHeight && window.scrollMaxY) {	
+				xScroll = window.innerWidth + window.scrollMaxX;
+				yScroll = window.innerHeight + window.scrollMaxY;
+			} else if (document.body.scrollHeight > document.body.offsetHeight){ // all but Explorer Mac
+				xScroll = document.body.scrollWidth;
+				yScroll = document.body.scrollHeight;
+			} else { // Explorer Mac...would also work in Explorer 6 Strict, Mozilla and Safari
+				xScroll = document.body.offsetWidth;
+				yScroll = document.body.offsetHeight;
+			}
 			
-			var	larghezzaFinestra = window.innerWidth;
-			var	altezzaFinestra = window.innerHeight;
+			var	larghezzaFinestra, altezzaFinestra;
+			if (self.innerHeight) {	// all except Explorer
+				if(document.documentElement.clientWidth){
+					larghezzaFinestra = document.documentElement.clientWidth; 
+				} else {
+					larghezzaFinestra = self.innerWidth;
+				}
+				altezzaFinestra = self.innerHeight;
+			} else if (document.documentElement && document.documentElement.clientHeight) { // Explorer 6 Strict Mode
+				larghezzaFinestra = document.documentElement.clientWidth;
+				altezzaFinestra = document.documentElement.clientHeight;
+			} else if (document.body) { // other Explorers
+				larghezzaFinestra = document.body.clientWidth;
+				altezzaFinestra = document.body.clientHeight;
+			}	
 			
 			if(yScroll < altezzaFinestra){
 				altezzaPagina = altezzaFinestra;
