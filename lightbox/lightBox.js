@@ -6,9 +6,9 @@
 			coloreOverlay: '#000',
 			opacitaOverlay: 0.8,
 		
-			immagineCaricamento: 'loading.gif',
-			immagineChiusura: 'close.gif',
-			immagineBianca: 'blank.gif',
+			immagineCaricamento: 'lightbox/loading.gif',
+			immagineChiusura: 'lightbox/close.gif',
+			immagineBianca: 'lightbox/blank.gif',
 		
 			bordoContenitore: 10,
 			velocitaRidimensionamento: 400,		
@@ -163,7 +163,9 @@
 			</div>
 			*/
 			
-			$('#funzioni').append('<div id="condividi"><a href="' + facebook +'" id="facebook" ><img src="facebook.jpg"  alt="Share on facebook" width="32" height="32" /></a><a href="'+twitter+'" id="twitter"><img src="twitter.jpg"  alt="Share on Twitter" width="32" height="32" /></a></div>');
+
+			$('#funzioni').append('<div id="condividi"><a href="' + facebook +'" id="facebook" ><img src="lightbox/facebook.jpg"  alt="Share on facebook" width="32" height="32" /></a><a href="'+twitter+'" id="twitter"><img src="lightbox/twitter.jpg"  alt="Share on Twitter" width="32" height="32" /></a></div>');
+
 			$('#scatola-contenitore-dati').slideDown('fast');
 			$('#condividi a').each(function(){
 				$(this).click(function(event){

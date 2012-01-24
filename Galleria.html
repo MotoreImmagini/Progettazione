@@ -1,32 +1,68 @@
 <HTML>
 	<HEAD>
-		<TITLE> Motore di ricerca di immagini || search by tag, color and similarity </TITLE>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<TITLE> Image search engine || search by tag, color and similarity </TITLE>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		
 		<script type="text/javascript" src="jsonJquery.js"></script>
-		<script type="text/javascript" src="jscolor/jscolor.js"></script>
-		<link rel="stylesheet" href="basic.css" type="text/css" />
- 		<script type="text/javascript" src="lightBox.js"></script>
-		<link rel="stylesheet" href="lightBox.css" type="text/css" />
+ 		<script type="text/javascript" src="lightbox/lightBox.js"></script>
+ 		
+ 		<link rel="stylesheet" href="basic.css" type="text/css" />
+		<link rel="stylesheet" href="lightbox/lightBox.css" type="text/css" />
+		
+		<link rel="stylesheet" href="color-picker/js_color_picker_v2.css" media="screen">
+		<script type="text/javascript" src="color-picker/color_functions.js"></script>
+		<script type="text/javascript" src="color-picker/js_color_picker_v2.js"></script>
  		
  		<script type="text/javascript">
    		 $(window).load(function() {
 			$("#navcontainer a").lightBox();
 		});
   		</script>
+  		
+  		<script type="text/javascript"> 
+			$(document).ready(function(){
+				$(".flip").click(function(){
+				    $(".panel").slideToggle("slow");
+				  });
+				$(".flip2").click(function(){
+				    $(".panel2").slideToggle("slow");
+				  });
+			});
+		</script>
+		
 	</HEAD>
 	<BODY>
-		<div id="intestazione">
-   			<h1> Motore di ricerca di immagini </h1>
-		</div>
+		<div id="intestazione"><h1> Image search engine || search by tag, color and similarity </h1></div>
 		<div id="contenuto">
-   			<div id="navcontainer">
+			<div id="tags-container">
+				<div id="color-container">
+					<div class="panel2">
+					<form>
+						<input type="text" value="#000000" size="10" maxlength="7" name="rgb2">
+						<input type="button" value="Color" onclick="showColorPicker(this,document.forms[0].rgb2)">
+						<input type="button" value="→" />
+					</form>
+					</div>
+					<p class="flip2">Search by color</p>
+				</div>
+				<div id="tag-container">
+					<div class="panel">
+						<form>
+							<input id="tag" type="text"><input type="button" value="→" />
+						</form>
+					</div>
+					<p class="flip">Search by Tag</p>
+				</div>
+			</div>
+			<div id="navcontainer">
 				<ul id="lista"></ul>
 			</div>
-			<div id="container">
-				<div id="tag-container"></div>
-				<div id="drop-container"></div>
-				<div id="color-container"></div>
+			<div id="drop-container">
+				<div id="drop-box">
+					<div id="drop"><b>DROP HERE</b></div>
+					<input id="similarity" type="button" value="Search by Similarity" />
+				</div>
 			</div>
 		</div>
 	</BODY>

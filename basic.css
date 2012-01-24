@@ -3,16 +3,22 @@ body {
 	padding: 0;
 	height: 100%;
 	width: 100%;
-	color: white;
+	color: black;
 	text-align: center;
 	font-family: verdana, arial, helvetica, sans-serif;
 	background-color:#333;
 	font-size: 70%;
 }
+			
 h1, h2 {
 	padding-right: 20px;
 	font-family: "Trebuchet MS", Verdana, sans-serif;
 	letter-spacing: -1px;
+}
+
+p {
+	font-family: "Trebuchet MS", Verdana, sans-serif;
+	font-size: 130%;
 }
 			
 div#intestazione {
@@ -34,19 +40,42 @@ div#contenuto {
 	border-color: #000;
 	border-style: solid none;
 }
+			
+div#tags-container {
+	position: relative;
+	width: 100%;
+	height: 15%;
+}
+			
+div#color-container {
+	position: relative;
+	left:10%;
+	width: 30%;
+	height: 100%;
+	float: left;
+}
+			
+div#tag-container {
+	position: relative;
+	left:30%;
+	width: 30%;
+	height:100%;
+	float: left;
+}
+			
 div#navcontainer {
 	overflow: auto;
 	margin: auto;
 	position: relative;
 	width: 100%;
-	height: 70%;
+	height: 60%;
 }
 						
 div#navcontainer ul {
 	text-align: center;
-	margin: 3% 7% 3% 4%;
+	margin: 0 7% 1% 4%;
 }
-			
+						
 div#navcontainer ul li{
 	margin: 20px 3px;
 	text-align: center;
@@ -57,36 +86,22 @@ div#navcontainer ul a:hover img {
 	padding: 3px;
 	border: 2px solid #000;
 }
-			
+						
 div#navcontainer ul li a img {
 	padding: 3px;
 	border: 2px solid #ccc;
 }
-div#container {
-	position: relative;
-	height:30%;
-	width:100%;
-}
-
-div#tag-container {
-	position: relative;
-	left:5%;
-	width: 30%;
-	height:100%;
-	float: left;
-}
 
 div#drop-container {
+	text-align: center;
 	position: relative;
-	left: 5%;
-	width: 30%;
-	height: 100%;
-	float: left;
+	height:25%;
+	width:100%;
 }
-
-div#color-container {
+			
+div#drop-box {
 	position: relative;
-	left:5%;
+	left: 35%;
 	width: 30%;
 	height: 100%;
 	float: left;
@@ -94,12 +109,18 @@ div#color-container {
 			
 div.panel,p.flip, div.panel2, p.flip2
 {
-	margin:0;
+	cursor: default;
+	margin:0px;
 	padding:5px;
 	text-align:center;
-	background:#e5eecc;
-	color:#000000;
+	background:#F6F6F6;
+	color:#333;
 	border:solid 1px #c3c3c3;
+	border-radius: 10px;
+}
+
+div.flip, div.flip2 {
+	margin: 10px;
 }
 div.panel, div.panel2
 {
@@ -107,7 +128,28 @@ div.panel, div.panel2
 	display:none;
 }
 
-input {
+p.flip:hover, p.flip2:hover
+{
+	color: #000000;
+	font-weight: bold;
+}
+input#tag {
 	position:relative;
 	width: 80%;
+}
+input#similarity {
+	font-family: "Trebuchet MS", Verdana, sans-serif;
+	font-size: 125%;
+	position: relative;
+	width: 70%;
+	height: 23%;
+}
+div#drop {
+	left: 30%;
+	position: relative;
+	width: 40%;
+	height: 76%;
+	border: 1px solid #444;
+	background-color: #F6f6f6;
+	color: #333;
 }
