@@ -12,7 +12,7 @@ $(document).ready(function(){
 		    
 		     if (iCount > iStart && iCount < (iStart + 13)) {
 		       
-		       htmlString += '<li><a href="' + item.media.m + '" target="_blank">';
+		       htmlString += '<li><a class="image" href="' + item.media.m + '" target="_blank">';
 		       htmlString += '<img title="' + item.title + '" src="' + item.media.m + '" height=40%' ;
 		       htmlString += '" alt="'; htmlString += item.title + '" />';
 		       htmlString += '</a></li>';
@@ -22,6 +22,9 @@ $(document).ready(function(){
 		
 	    $('#lista').html(htmlString);
 	    $('#lista a').hide();
+	    $('ul#lista').easyPaginate({
+			step:10
+		});
 		$('#lista a').show(2000);
 	}
 });
