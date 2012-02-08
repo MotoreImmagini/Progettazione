@@ -68,7 +68,7 @@
 		
 		function _crea_interfaccia(){
 
-			$('body').append('<div id="overlay"></div><div id="lightbox"><div id="scatola-contenitore-immagine"><div id="contenitore-immagine"><img id="immagine"><div id="caricamento"><a href="#" id="immagine-caricamento"><img src="' + opzioni.immagineCaricamento + '"></a></div></div></div><div id="scatola-contenitore-dati"><div id="contenitore-dati"><div id="funzioni"></div><div id="contenitore-chiusura"><a href="#" id="chiusura"><img src="' + opzioni.immagineChiusura + '"></a></div></div></div></div>');
+			$('body').append('<div id="overlay"></div><div id="lightbox"><div id="scatola-contenitore-immagine"><div id="contenitore-immagine"><img id="immagine"><div id="caricamento"><a href="#" id="immagine-caricamento"><img src="' + opzioni.immagineCaricamento + '"></a></div></div></div><div id="scatola-contenitore-dati"><div id="contenitore-dati"><div id="funzioni" class="funzione"></div><div id="contenitore-chiusura"><a href="#" id="chiusura"><img src="' + opzioni.immagineChiusura + '"></a></div></div></div></div>');
 
 			var arrDimensionePagina = _getDimensionePagina();
 			
@@ -79,15 +79,14 @@
 				height:				arrDimensionePagina[1]
 			}).fadeIn();
 			
-			
-			
 			$('#lightbox').css({
 				top:	arrDimensionePagina[1] / 10,
 			}).show();
 			
-			$('#overlay,#lightbox').click(function() {
+			$('#overlay').click(function() {
 				_fine();
 			});
+			
 			$('#chiusura').click(function() {
 				_fine();
 				return false;
@@ -131,7 +130,9 @@
 			
 			var larghezzaFinale = (larghezza + (opzioni.bordoContenitore * 2));
 			var altezzaFinale = (altezza + (opzioni.bordoContenitore * 2));
-		
+			var arrDimensionePagina = _getDimensionePagina();
+			
+			$('#lightbox').css({left: ((arrDimensionePagina[0]-larghezzaFinale)/2), width: larghezzaFinale});
 			$('#scatola-contenitore-immagine').animate({width: larghezzaFinale, height: altezzaFinale}, opzioni.velocitaRidimensionamento, function(){_mostra_immagine();});
 			$('#scatola-contenitore-dati').css({width: larghezza});
 		};
@@ -161,10 +162,19 @@
 					<img src="twitter.jpg"  alt="Share on Twitter" width="32" height="32" />
 				</a>
 			</div>
+			<form action=".">
+			<div class="row">
+				<label for="jquery-tagbox-text">Aggiungi tag</label>
+				<input type="text" id="jquery-tagbox-text" />
+			</div>
+			</form>
 			*/
 			
 
-			$('#funzioni').append('<div id="condividi"><a href="' + facebook +'" id="facebook" ><img src="lightbox/facebook.jpg"  alt="Share on facebook" width="32" height="32" /></a><a href="'+twitter+'" id="twitter"><img src="lightbox/twitter.jpg"  alt="Share on Twitter" width="32" height="32" /></a></div>');
+			$('#funzioni').append('<div id="condividi"><a href="' + facebook +'" id="facebook" ><img src="lightbox/facebook.jpg"  alt="Share on facebook" width="32" height="32" /></a><a href="'+twitter+'" id="twitter"><img src="lightbox/twitter.jpg"  alt="Share on Twitter" width="32" height="32" /></a></div>');			
+		    $('#contenitore-dati').append('<div id="tag"><form action="."><div class="row"><label for="jquery-tagbox-text">Aggiungi tag</label> <input type="text" id="jquery-tagbox-text" /></div></form></div>');
+		    
+		    $("#jquery-tagbox-text").tagBox();
 			
 			$('#scatola-contenitore-dati').slideDown('fast');
 			$('#condividi a').each(function(){
