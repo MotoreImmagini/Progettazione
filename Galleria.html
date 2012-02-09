@@ -4,13 +4,15 @@
 		<TITLE> Image search engine || search by tag, color and similarity </TITLE>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		
+		<script type="text/javascript" src="tagbox/tagbox.js"></script>
 		<script type="text/javascript" src="jsonJquery.js"></script>
  		<script type="text/javascript" src="lightbox/lightBox.js"></script>
- 		<script type="text/javascript" src="paginate/easypaginate.js"></script>
- 		
+		<script type="text/javascript" src="paginate/easypaginate.js"></script>
+
+ 		<link rel="stylesheet" href="paginate/paginate.css" type="text/css" />
  		<link rel="stylesheet" href="basic.css" type="text/css" />
 		<link rel="stylesheet" href="lightbox/lightBox.css" type="text/css" />
-		<link rel="stylesheet" href="paginate/paginate.css" type="text/css" />
+ 		<link rel="stylesheet" href="tagbox/tagbox.css" type="text/css" />
 		
 		<link rel="stylesheet" href="color-picker/js_color_picker_v2.css" media="screen">
 		<script type="text/javascript" src="color-picker/color_functions.js"></script>
@@ -19,6 +21,7 @@
  		<script type="text/javascript">
    		 $(window).load(function() {
 			$("#navcontainer .image").lightBox();
+			
 		});
   		</script>
   		
