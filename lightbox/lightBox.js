@@ -164,7 +164,7 @@
 			</div>
 			<form action=".">
 			<div class="row">
-				<label for="jquery-tagbox-text">Aggiungi tag</label>
+				<label for="jquery-tagbox-text">Add tag</label>
 				<input type="text" id="jquery-tagbox-text" />
 			</div>
 			</form>
@@ -172,7 +172,7 @@
 			
 
 			$('#funzioni').append('<div id="condividi"><a href="' + facebook +'" id="facebook" ><img src="lightbox/facebook.jpg"  alt="Share on facebook" width="32" height="32" /></a><a href="'+twitter+'" id="twitter"><img src="lightbox/twitter.jpg"  alt="Share on Twitter" width="32" height="32" /></a></div>');			
-		    $('#contenitore-dati').append('<div id="tag"><form action="."><div class="row"><label for="jquery-tagbox-text">Aggiungi tag</label> <input type="text" id="jquery-tagbox-text" /></div></form></div>');
+		    $('#contenitore-dati').append('<div id="tag"><form action="."><div class="row"><label for="jquery-tagbox-text">Add tag</label> <input type="text" id="jquery-tagbox-text" /></div></form></div>');
 		    
 		    $("#jquery-tagbox-text").tagBox();
 			
