@@ -1,4 +1,3 @@
-
 <HTML>
 	<HEAD>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -7,33 +6,29 @@
 		
 		<script type="text/javascript" src="tagbox/tagbox.js"></script>
 		<script type="text/javascript" src="jsonJquery.js"></script>
- 		<script type="text/javascript" src="lightbox/lightBox.js"></script>
+ 		<script type="text/javascript" src="fancybox/fancybox.js"></script>
 		<script type="text/javascript" src="paginate/easypaginate.js"></script>
-		
-		<script src="ui/jquery.ui.core.js"></script>
-		<script src="ui/jquery.ui.widget.js"></script>
-		<script src="ui/jquery.ui.mouse.js"></script>
-		<script src="ui/jquery.ui.draggable.js"></script>
-		<script src="ui/jquery.ui.droppable.js"></script>
 
  		<link rel="stylesheet" href="paginate/paginate.css" type="text/css" />
  		<link rel="stylesheet" href="basic.css" type="text/css" />
-		<link rel="stylesheet" href="lightbox/lightBox.css" type="text/css" />
+		<link rel="stylesheet" href="fancybox/fancybox.css" type="text/css" />
  		<link rel="stylesheet" href="tagbox/tagbox.css" type="text/css" />
 		
 		<link rel="stylesheet" href="color-picker/js_color_picker_v2.css" media="screen">
 		<script type="text/javascript" src="color-picker/color_functions.js"></script>
 		<script type="text/javascript" src="color-picker/js_color_picker_v2.js"></script>
- 		
- 		<script type="text/javascript">
-   		 $(window).load(function() {
-			$("#navcontainer .image").lightBox();
-			
-		});
-  		</script>
-  		
+
   		<script type="text/javascript"> 
 			$(document).ready(function(){
+				$(".fancybox").fancybox({
+					openEffect: 'elastic',
+					closeEffect: 'elastic',
+					helpers: {
+						title: {
+							type: 'inside'	
+						}
+					}
+				});
 				$(".flip").click(function(){
 				    $(".panel").slideToggle("slow");
 				  });
@@ -41,26 +36,8 @@
 				    $(".panel2").slideToggle("slow");
 				  });
 			});
-<<<<<<< HEAD
 		</script>
-			<script>
-	$(function() {
-		$( "#draggable" ).draggable({ revert: "invalid" });
-
-		$( "#droppable" ).droppable({
-			drop: function( event, ui ) {
-				$( this )
-					.find( "b" )
-						.html( "Dropped!" );
-			}
-		});
-	});
-	</script>
 		
-		
-=======
-		</script>		
->>>>>>> 03eb95bb45fd4a5656d5d627416acf479046e03c
 	</HEAD>
 	<BODY>
 		<div id="intestazione"><h1> Image search engine || search by tag, color and similarity </h1></div>
@@ -90,7 +67,7 @@
 			</div>
 			<div id="drop-container">
 				<div id="drop-box">
-					<div id="droppable"><b>DROP HERE</b></div>
+					<div id="drop"><b>DROP HERE</b></div>
 					<input id="similarity" type="button" value="Search by Similarity" />
 				</div>
 			</div>

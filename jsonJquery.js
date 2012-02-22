@@ -12,8 +12,8 @@ $(document).ready(function(){
 		    
 		     
 		       
-		       htmlString += '<li><a class="image" href="' + item.thumbURL + '" target="_blank">';
-		       htmlString += '<img title="' + item.title + '" src="' + item.link + '" height=37%' ;
+		       htmlString += '<li><a class="fancybox" title="' + item.filename + '" rel="group" href="' + item.link + '" target="_blank">';
+		       htmlString += '<img  src="' + item.thumbURL + '" height=37%' ;
 		       htmlString += '" alt="'; htmlString += item.title + '" />';
 		       htmlString += '</a></li>';
 		       
