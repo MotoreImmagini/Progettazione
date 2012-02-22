@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	$.getJSON("http://api.flickr.com/services/feeds/groups_pool.gne?id=998875@N22&lang=en-us&format=json&jsoncallback=?", displayImages);
+	$.getJSON("http://shrek.micc.unifi.it:8080/daphnis/random?outfmt=JSON", displayImages);
 
 	function displayImages(data) {
 		var iStart = Math.floor(Math.random()*(8));
@@ -8,12 +8,12 @@ $(document).ready(function(){
 		
 		var htmlString = [];
 		
-		$.each(data.items, function(i,item){
+		$.each(data.results, function(i,item){
 		    
 		     if (iCount > iStart && iCount < (iStart + 13)) {
 		       
-		       htmlString += '<li><a class="image" href="' + item.media.m + '" target="_blank">';
-		       htmlString += '<img title="' + item.title + '" src="' + item.media.m + '" height=40%' ;
+		       htmlString += '<li><a class="image" href="' + item.thumbURL + '" target="_blank">';
+		       htmlString += '<img title="' + item.title + '" src="' + item.link + '" height=35%' ;
 		       htmlString += '" alt="'; htmlString += item.title + '" />';
 		       htmlString += '</a></li>';
 		       }
@@ -23,7 +23,7 @@ $(document).ready(function(){
 	    $('#lista').html(htmlString);
 	    $('#lista a').hide();
 	    $('ul#lista').easyPaginate({
-			step:10
+			step:12
 		});
 		$('#lista a').show(2000);
 	}
