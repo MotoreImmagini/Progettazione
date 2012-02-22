@@ -67,11 +67,12 @@ div#navcontainer {
 	overflow: auto;
 	margin: auto;
 	position: relative;
-	width: 100%;
+	width: 95%;
 	height: 60%;
 }
 						
 div#navcontainer ul {
+	width:85%;
 	text-align: center;
 	margin: 0 7% 1% 4%;
 }
