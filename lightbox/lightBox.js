@@ -8,7 +8,6 @@
 		
 			immagineCaricamento: 'lightbox/loading.gif',
 			immagineChiusura: 'lightbox/close.gif',
-			immagineBianca: 'lightbox/blank.gif',
 		
 			bordoContenitore: 10,
 			velocitaRidimensionamento: 400,		

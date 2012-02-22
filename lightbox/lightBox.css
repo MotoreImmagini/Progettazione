@@ -23,7 +23,7 @@
 	width: 250px;
 	height: 250px;
 	margin:0 auto;
-	
+
 }
 #contenitore-immagine { 
 	padding: 10px;
@@ -54,16 +54,6 @@
 }
 
 
-#funzioni{
-	float: left;
-	font-size:12px;
-	font-weight: bold;
-}
-
-input{
-	width: 70%;
-}
-
 #contenitore-dati #funzioni{ 
 	width: 70%; 
 	float: left; 
@@ -77,9 +67,8 @@ input{
 	padding:0;
 }
 
-
-
 #chiusura {
 	width: 66px; 
 	float: right;
 	padding-bottom: 0.7em;	
+}

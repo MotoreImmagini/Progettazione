@@ -36,11 +36,11 @@ ol#pagination li.prev, ol#pagination li.next{
 }
 
 ol#pagination li.prev{
-	left:8%;
+	left:6%;
 	background:url('bg_buttons.png') no-repeat 0 -64px;
 }
 
 ol#pagination li.next{
-	right:8%;
+	right:6%;
 	background:url('bg_buttons.png') no-repeat 0 -48px;
 }
