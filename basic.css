@@ -144,7 +144,7 @@ input#similarity {
 	width: 70%;
 	height: 23%;
 }
-div#drop {
+div#droppable {
 	left: 30%;
 	position: relative;
 	width: 40%;

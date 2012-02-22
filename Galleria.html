@@ -9,6 +9,12 @@
 		<script type="text/javascript" src="jsonJquery.js"></script>
  		<script type="text/javascript" src="lightbox/lightBox.js"></script>
 		<script type="text/javascript" src="paginate/easypaginate.js"></script>
+		
+		<script src="ui/jquery.ui.core.js"></script>
+		<script src="ui/jquery.ui.widget.js"></script>
+		<script src="ui/jquery.ui.mouse.js"></script>
+		<script src="ui/jquery.ui.draggable.js"></script>
+		<script src="ui/jquery.ui.droppable.js"></script>
 
  		<link rel="stylesheet" href="paginate/paginate.css" type="text/css" />
  		<link rel="stylesheet" href="basic.css" type="text/css" />
@@ -36,6 +42,20 @@
 				  });
 			});
 		</script>
+			<script>
+	$(function() {
+		$( "#draggable" ).draggable({ revert: "invalid" });
+
+		$( "#droppable" ).droppable({
+			drop: function( event, ui ) {
+				$( this )
+					.find( "b" )
+						.html( "Dropped!" );
+			}
+		});
+	});
+	</script><br/>
+		
 		
 	</HEAD>
 	<BODY>
@@ -66,7 +86,7 @@
 			</div>
 			<div id="drop-container">
 				<div id="drop-box">
-					<div id="drop"><b>DROP HERE</b></div>
+					<div id="droppable"><b>DROP HERE</b></div>
 					<input id="similarity" type="button" value="Search by Similarity" />
 				</div>
 			</div>
