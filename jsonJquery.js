@@ -10,20 +10,20 @@ $(document).ready(function(){
 		
 		$.each(data.results, function(i,item){
 		    
-		     if (iCount > iStart && iCount < (iStart + 13)) {
+		     
 		       
 		       htmlString += '<li><a class="image" href="' + item.thumbURL + '" target="_blank">';
-		       htmlString += '<img title="' + item.title + '" src="' + item.link + '" height=35%' ;
+		       htmlString += '<img title="' + item.title + '" src="' + item.link + '" height=37%' ;
 		       htmlString += '" alt="'; htmlString += item.title + '" />';
 		       htmlString += '</a></li>';
-		       }
-		       iCount++;
+		       
+		     
 		});
 		
 	    $('#lista').html(htmlString);
 	    $('#lista a').hide();
 	    $('ul#lista').easyPaginate({
-			step:12
+			step:10
 		});
 		$('#lista a').show(2000);
 	}
