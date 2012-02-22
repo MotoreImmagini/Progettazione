@@ -99,10 +99,29 @@ div#drop-container {
 	height:25%;
 	width:100%;
 }
+div#random-container {
+	position: relative;
+	float: left;
+	width:35%;
+	height: 100%;
+	
+}
+
+.random {
+	position:relative;
+	margin-top: 21%;
+	margin-left: 5%;
+	text-align: left;
+}
+p.random:hover
+{
+	color: #000000;
+	font-weight: bold;
+	cursor: default;
+}
 			
 div#drop-box {
 	position: relative;
-	left: 35%;
 	width: 30%;
 	height: 100%;
 	float: left;

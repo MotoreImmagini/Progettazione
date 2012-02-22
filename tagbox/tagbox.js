@@ -33,7 +33,9 @@
       maxTags: -1,
       maxTagsErr: function(max_tags) { alert("A maximum of "+max_tags+" tags can be added!"); },
       beforeTagAdd: function(tag_to_add) {},
-      afterTagAdd: function(added_tag) {}
+      afterTagAdd: function(added_tag) {},
+      filename: 'BG_35035_234361.mpg-1438.png',
+      URI: 'local://BG_35035_234361.mpg-1438.png',
     }
     
     if (options) {
@@ -100,7 +102,13 @@
         $element.tagBox(options);
       });
       
-  //  Generate Tags List from Input item
+  /** Generate Tags List from Input item
+qqq  		var imageTags= get_tags_from_URI(options.URI);
+  		var numTags= imageTags.length;
+  		for(var i=0; i<numTags; i++){
+  			add_tag(imageTags[i]);
+  		};
+  		*/
       generate_tags_list( get_current_tags_list() );
       if(!options.readonly) {
         $tag_add_elem.click(function() {
@@ -141,6 +149,31 @@
         });
       }
   //  Methods
+
+/*  	function get_tags_from_URI(uri){
+qqq  	options.URI è già impostato
+  		$.ajax({
+    		type: "POST",
+   			url: "http://shrek.micc.unifi.it:8080/daphnis/getimagetags?imageURI="+uri,
+    		error: errore,
+    		success: create_vector,
+    		crossDomain: true
+  		});
+  		//$post('http://shrek.micc.unifi.it:8080/daphnis/getimagetags?imageURI='+uri, create_vector(xml));
+  		
+  		function create_vector(xml){
+  		alert('ok fin qui');
+  		var arrayTag=[];
+  		$(data).find('tag').each(function(){
+				arrayTag.push($(this).text());
+  		});
+  	}
+  	}
+//qqq
+  	function errore(){
+  			alert('Impossibile contattare il server, riprovare più tardi.');
+  		}
+  		*/
       function separator_encountered(val) {
         return (val.indexOf( options.separator ) != "-1") ? true : false;
       }
@@ -168,9 +201,9 @@
         $element.val(tags_list.join(options.separator));
       }
       
-      function add_tag(new_tag_items) {
+      function add_tag(tag_items) {
         var tags_list = get_current_tags_list();
-        new_tag_items = new_tag_items.split(options.separator);
+        var new_tag_items = tag_items.split(options.separator);
         new_tag_items = jQuery.map(new_tag_items, function (item) { return jQuery.trim(item); });
         tags_list = tags_list.concat(new_tag_items);
         tags_list = jQuery.map( tags_list, function(item) { if(item != "") return item } );
@@ -179,16 +212,39 @@
           return;
         }
         generate_tags_list(tags_list);
+//qqq
+        var added_tags="filename="+options.filename+"&tag="+tag_items;
+        
+   		$.ajax({
+        	type: "POST",
+        	url: "http://shrek.micc.unifi.it:8080/daphnis/tagging?",
+        	data: added_tags,
+        	
+        	
+        })
       }
       
-      function remove_tag(old_tag_items) {
+      function remove_tag(tag_items) {
         var tags_list = get_current_tags_list();
-        old_tag_items = old_tag_items.split(options.separator);
-        old_tag_items = jQuery.map(old_tag_items, function (item) { return jQuery.trim(item); });
+        tag_items = tag_items.split(options.separator);
+        var old_tag_items = jQuery.map(tag_items, function (item) { return jQuery.trim(item); });
         jQuery.each( old_tag_items, function(key, val) {
           tags_list = jQuery.grep(tags_list, function(value) { return value != val; });
         });
         generate_tags_list(tags_list);
+//qqq        
+        var numTags=tag_items.length;
+        for(var i=0; i<numTags; i++){
+        	var removed_tag="filename="+options.filename+"&tag="+tag_items[i];
+        	
+        	$.ajax({
+        		type: "GET",
+        		url: "http://shrek.micc.unifi.it:8080/daphnis/removetag?",
+        		data: removed_tag,        		
+        	})
+        }
+        
+        
       }
     });
   }
