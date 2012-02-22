@@ -54,16 +54,6 @@
 }
 
 
-#funzioni{
-	float: left;
-	font-size:12px;
-	font-weight: bold;
-}
-
-input{
-	width: 70%;
-}
-
 #contenitore-dati #funzioni{ 
 	width: 70%; 
 	float: left; 
@@ -76,8 +66,6 @@ input{
 	margin:3px 2px 2px 2px; 
 	padding:0;
 }
-
-
 
 #chiusura {
 	width: 66px; 
