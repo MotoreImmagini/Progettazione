@@ -20,7 +20,7 @@
       className: 'tagBox',
       tagInputClassName: '',
       tagButtonClassName: '',
-      tagButtonTitle: 'Add',
+      tagButtonTitle: 'Add Tag',
       confirmRemoval: false,
       confirmRemovalText: 'Do you really want to remove the tag?',
       completeOnSeparator: true,

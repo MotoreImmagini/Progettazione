@@ -53,13 +53,13 @@
 			</div>
 			<div id="scatola-contenitore-dati">
 				<div id="contenitore-dati">
-					<div id="funzioni">
-		
-					</div>
 					<div id="contenitore-chiusura">
 						<a href="#" id="chiusura">
 							<img src="' + opzioni.immagineChiusura + '">
 						</a>
+					</div>
+					<div id="funzioni">
+		
 					</div>
 				</div>
 			</div>
@@ -68,7 +68,7 @@
 		
 		function _crea_interfaccia(){
 
-			$('body').append('<div id="overlay"></div><div id="lightbox"><div id="scatola-contenitore-immagine"><div id="contenitore-immagine"><img id="immagine"><div id="caricamento"><a href="#" id="immagine-caricamento"><img src="' + opzioni.immagineCaricamento + '"></a></div></div></div><div id="scatola-contenitore-dati"><div id="contenitore-dati"><div id="funzioni" class="funzione"></div><div id="contenitore-chiusura"><a href="#" id="chiusura"><img src="' + opzioni.immagineChiusura + '"></a></div></div></div></div>');
+			$('body').append('<div id="overlay"></div><div id="lightbox"><div id="scatola-contenitore-immagine"><div id="contenitore-immagine"><img id="immagine"><div id="caricamento"><a href="#" id="immagine-caricamento"><img src="' + opzioni.immagineCaricamento + '"></a></div></div></div><div id="scatola-contenitore-dati"><div id="contenitore-dati"><div id="contenitore-chiusura"><a href="#" id="chiusura"><img src="' + opzioni.immagineChiusura + '"></a></div><div id="funzioni"></div></div></div></div>');
 
 			var arrDimensionePagina = _getDimensionePagina();
 			
@@ -149,30 +149,16 @@
 			
 			var url=$('#immagine').attr('src');
 			
-			var facebook='http://www.facebook.com/sharer.php?u='+url;
-			var twitter='http://twitter.com/home?status=ImmagineDalProgettoDiPPM%20'+url;;			
-			
 			/**da appendere al div #funzioni
-
-			<div id="condividi">
-				<a href="' + facebook +'" id="facebook" >
-					<img src="facebook.jpg"  alt="Share on facebook" width="32" height="32" />
-				</a>
-				<a href="'+twitter+'" id="twitter">
-					<img src="twitter.jpg"  alt="Share on Twitter" width="32" height="32" />
-				</a>
-			</div>
 			<form action=".">
 			<div class="row">
-				<label for="jquery-tagbox-text">Add tag</label>
 				<input type="text" id="jquery-tagbox-text" />
 			</div>
 			</form>
 			*/
 			
 
-			$('#funzioni').append('<div id="condividi"><a href="' + facebook +'" id="facebook" ><img src="lightbox/facebook.jpg"  alt="Share on facebook" width="32" height="32" /></a><a href="'+twitter+'" id="twitter"><img src="lightbox/twitter.jpg"  alt="Share on Twitter" width="32" height="32" /></a></div>');			
-		    $('#contenitore-dati').append('<div id="tag"><form action="."><div class="row"><label for="jquery-tagbox-text">Add tag</label> <input type="text" id="jquery-tagbox-text" /></div></form></div>');
+		    $('#funzioni').append('<form action="."><div class="row"><input type="text" id="jquery-tagbox-text" /></div></form>');
 		    
 		    $("#jquery-tagbox-text").tagBox();
 			
