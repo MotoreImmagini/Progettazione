@@ -20,6 +20,9 @@ p {
 	font-family: "Trebuchet MS", Verdana, sans-serif;
 	font-size: 130%;
 }
+p.random{
+	width: 30%;
+}
 			
 div#intestazione {
 	color: #eee;

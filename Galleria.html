@@ -29,13 +29,22 @@
 						}
 					}
 				});
+				
 				$(".flip").click(function(){
 				    $(".panel").slideToggle("slow");
 				  });
+				  
 				$(".flip2").click(function(){
 				    $(".panel2").slideToggle("slow");
 				  });
-			});
+				  
+				getRandom();
+				
+				});
+				
+				function getRandom() {
+					$.getJSON("http://shrek.micc.unifi.it:8080/daphnis/random?outfmt=JSON", displayImages);
+				}
 		</script>
 
 	</HEAD>
@@ -67,7 +76,7 @@
 			</div>
 			<div id="drop-container">
 				<div id="random-container">
-					<p class="random">Get random images</p>
+					<p class="random" onclick="getRandom()">Get random images</p>
 				</div>
 				<div id="drop-box">
 					<div id="droppable"><b>DROP HERE</b></div>
