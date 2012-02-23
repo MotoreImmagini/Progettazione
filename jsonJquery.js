@@ -1,5 +1,5 @@
 function displayImages(data) {
-
+	
 var htmlString = [];
 
 $.each(data.results, function(i,item){
@@ -17,7 +17,7 @@ htmlString += '</a></li>';
 $('#lista').html(htmlString);
 $('#lista a').hide();
 $('ul#lista').easyPaginate({
-step:10
+step:12
 });
 $('#lista a').show(2000);
 }
