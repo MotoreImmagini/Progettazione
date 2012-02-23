@@ -1,14 +1,21 @@
+
 <HTML>
 	<HEAD>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<TITLE> Image search engine || search by tag, color and similarity </TITLE>
+		
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 		
 		<script type="text/javascript" src="tagbox/tagbox.js"></script>
 		<script type="text/javascript" src="Display.js"></script>
  		<script type="text/javascript" src="fancybox/fancybox.js"></script>
 		<script type="text/javascript" src="paginate/easypaginate.js"></script>
 		<script type="text/javascript" src="Colore.js"></script>
+		<script type="text/javascript" src="Tag.js"></script>
+		<script type="text/javascript" src="autocomplete.js"></script>
 
  		<link rel="stylesheet" href="paginate/paginate.css" type="text/css" />
  		<link rel="stylesheet" href="basic.css" type="text/css" />
@@ -66,7 +73,7 @@
 				<div id="tag-container">
 					<div class="panel">
 						<form>
-							<input id="tag" type="text"><input type="button" value="→" />
+							<input id="autocomplete" type="text"><input type="button" onclick="RicercaTag()" value="→" />
 						</form>
 					</div>
 					<p class="flip">Search by Tag</p>
