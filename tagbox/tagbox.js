@@ -102,13 +102,19 @@
         $element.tagBox(options);
       });
       
-  /** Generate Tags List from Input item
-qqq  		var imageTags= get_tags_from_URI(options.URI);
-  		var numTags= imageTags.length;
-  		for(var i=0; i<numTags; i++){
-  			add_tag(imageTags[i]);
-  		};
-  		*/
+//qqq	Generate Tags List from Input item
+
+	var dati="imageURI="+options.URI;
+	
+	$.ajax({
+		type: "POST",
+  		url:"http://shrek.micc.unifi.it:8080/daphnis/getimagetags?",
+  		data: dati,
+  		success: show_tags,
+  		
+  	});
+  	
+		
       generate_tags_list( get_current_tags_list() );
       if(!options.readonly) {
         $tag_add_elem.click(function() {
@@ -149,31 +155,24 @@ qqq  		var imageTags= get_tags_from_URI(options.URI);
         });
       }
   //  Methods
+	//qqq
+		function show_tags(data){
+			
+  			var imageTags=[];
+  			var i=0;
+			$(data).find('tag').each(function(){
+				imageTags[i]=$(this).text();
+				i++;
+				
+  			}); 
+  			var numTags= imageTags.length;
 
-/*  	function get_tags_from_URI(uri){
-qqq  	options.URI è già impostato
-  		$.ajax({
-    		type: "POST",
-   			url: "http://shrek.micc.unifi.it:8080/daphnis/getimagetags?imageURI="+uri,
-    		error: errore,
-    		success: create_vector,
-    		crossDomain: true
-  		});
-  		//$post('http://shrek.micc.unifi.it:8080/daphnis/getimagetags?imageURI='+uri, create_vector(xml));
-  		
-  		function create_vector(xml){
-  		alert('ok fin qui');
-  		var arrayTag=[];
-  		$(data).find('tag').each(function(){
-				arrayTag.push($(this).text());
-  		});
-  	}
-  	}
-//qqq
-  	function errore(){
-  			alert('Impossibile contattare il server, riprovare più tardi.');
+  			for(var i=0; i<numTags; i++){
+  				add_tag(imageTags[i]);
+  			};
   		}
-  		*/
+		
+  		
       function separator_encountered(val) {
         return (val.indexOf( options.separator ) != "-1") ? true : false;
       }
@@ -213,15 +212,14 @@ qqq  	options.URI è già impostato
         }
         generate_tags_list(tags_list);
 //qqq
-        var added_tags="filename="+options.filename+"&tag="+tag_items;
+        	var added_tags="filename="+options.filename+"&tag="+tag_items;
         
-   		$.ajax({
-        	type: "POST",
-        	url: "http://shrek.micc.unifi.it:8080/daphnis/tagging?",
-        	data: added_tags,
-        	
-        	
-        })
+   			$.ajax({
+        		type: "POST",
+        		url: "http://shrek.micc.unifi.it:8080/daphnis/tagging?",
+        		data: added_tags,
+        	})
+       
       }
       
       function remove_tag(tag_items) {
