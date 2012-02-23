@@ -20,7 +20,7 @@ htmlString += '</a></li>';
 $('#lista').html(htmlString);
 $('#lista a').hide();
 $('ul#lista').easyPaginate({
-step:12
+step:10
 });
 $('#lista a').show(2000);
 }
