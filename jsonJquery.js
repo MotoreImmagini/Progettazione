@@ -1,5 +1,11 @@
 function displayImages(data) {
 	
+<<<<<<< HEAD
+=======
+$('ul#lista').remove();
+$('#navcontainer').html('<ul id="lista"></ul>');
+
+>>>>>>> 8778d299f9ba27fd93b52e93a7a44f0c81a2e6d0
 var htmlString = [];
 
 $.each(data.results, function(i,item){
