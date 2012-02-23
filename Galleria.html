@@ -5,9 +5,10 @@
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		
 		<script type="text/javascript" src="tagbox/tagbox.js"></script>
-		<script type="text/javascript" src="jsonJquery.js"></script>
+		<script type="text/javascript" src="Display.js"></script>
  		<script type="text/javascript" src="fancybox/fancybox.js"></script>
 		<script type="text/javascript" src="paginate/easypaginate.js"></script>
+		<script type="text/javascript" src="Colore.js"></script>
 
  		<link rel="stylesheet" href="paginate/paginate.css" type="text/css" />
  		<link rel="stylesheet" href="basic.css" type="text/css" />
@@ -55,9 +56,9 @@
 				<div id="color-container">
 					<div class="panel2">
 					<form>
-						<input type="text" value="#000000" size="10" maxlength="7" name="rgb2">
+						<input id="colore" type="text" value="#000000" size="10" maxlength="7" name="rgb2">
 						<input type="button" value="Color" onclick="showColorPicker(this,document.forms[0].rgb2)">
-						<input type="button" value="→" />
+						<input type="button" onclick="RicercaColore()" value="→" />
 					</form>
 					</div>
 					<p class="flip2">Search by color</p>
