@@ -1,4 +1,7 @@
 function displayImages(data) {
+	
+$('ul#lista').remove();
+$('#navcontainer').html('<ul id="lista"></ul>');
 
 var htmlString = [];
 
