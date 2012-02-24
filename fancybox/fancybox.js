@@ -10,6 +10,7 @@
  *
  */
 (function (window, document, $) {
+	
 	var W = $(window),
 		D = $(document),
 		F = $.fancybox = function () {
@@ -58,8 +59,8 @@
 			loop: true,
 			ajax: { dataType: 'html', headers: { 'X-fancyBox': true } },
 			keys: {
-				next: [13, 32, 34, 39, 40], // enter, space, page down, right arrow, down arrow
-				prev: [8, 33, 37, 38], // backspace, page up, left arrow, up arrow
+				next: [],//[13, 32, 34, 39, 40], // enter, space, page down, right arrow, down arrow
+				prev: [],//[8, 33, 37, 38], // backspace, page up, left arrow, up arrow
 				close: [27] // escape key
 			},
 
@@ -482,7 +483,6 @@
 				href,
 				type,
 				rez;
-
 			if (element && (element.nodeType || element instanceof $)) {
 				isDom = true;
 
@@ -490,9 +490,9 @@
 					coming = $(element).metadata();
 				}
 			}
-
+			
 			coming = $.extend(true, {}, F.opts, {index : index, element : element}, ($.isPlainObject(element) ? element : coming));
-
+			
 			// Re-check overridable options
 			$.each(['href', 'title', 'content', 'type'], function(i,v) {
 				coming[v] = F.opts[ v ] || (isDom && $(element).attr( v )) || coming[ v ] || null;
@@ -596,6 +596,7 @@
 			coming.group = F.group;
 			coming.isDom = isDom;
 			coming.href = href;
+			
 
 			if (type === 'image') {
 				F._loadImage();
@@ -776,7 +777,7 @@
 
 				case 'image':
 					content = current.tpl.image.replace('{href}', current.href);
-
+					
 					current.aspectRatio = true;
 				break;
 
@@ -1080,6 +1081,14 @@
 	 */
 
 	F.transitions = {
+		//qqq
+		getURI: function(){
+			var current=F.current,
+				element=current.element,
+				uri=$(current.element).attr('title');
+			return uri;
+		},
+		
 		getOrigPosition: function () {
 			var current = F.current,
 				element = current.element,
@@ -1089,7 +1098,7 @@
 				width = 50,
 				height = 50,
 				viewport;
-
+			
 			if (!orig.length && current.isDom && $(element).is(':visible')) {
 				orig = $(element).find('img:first');
 
@@ -1104,6 +1113,7 @@
 				if (orig.is('img')) {
 					width = orig.outerWidth();
 					height = orig.outerHeight();
+					
 				}
 
 			} else {
@@ -1157,8 +1167,12 @@
 
 				//Remove "position" property
 				delete endPos.position;
-
+//qqq
 				startPos = this.getOrigPosition();
+				var uri=this.getURI();
+				
+				
+				
 
 				if (current.openOpacity) {
 					startPos.opacity = 0;
@@ -1352,7 +1366,7 @@
 		beforeShow: function (opts) {
 			var title, text = F.current.title;
 			
-			/**da appendere al div #funzioni
+			/**da appendere insieme al titolo
 			<form action=".">
 			<div class="row">
 				<input type="text" id="jquery-tagbox-text" />
@@ -1361,8 +1375,26 @@
 			*/
 			
 			if (text) {
-				title = $('<div class="fancybox-title fancybox-title-' + opts.type + '-wrap">' + text + '<form action="."><div class="row"><input type="text" id="jquery-tagbox-text" /></div></form></div>').appendTo('body');
-				$("#jquery-tagbox-text").tagBox();
+				uris= new Array();
+				var i=0;
+				$("a.fancybox img").each(function() {
+  					var $this = $(this);
+  					var filename=$this.parent().attr('title');
+  					uris[i]=$this.attr('title');
+  					i++;
+  						
+				});
+				var uri=uris[F.current.index];
+				
+				title = $('<div class="fancybox-title fancybox-title-' + opts.type + '-wrap"><form action="."><div class="row"><input type="text" id="jquery-tagbox-text" /></div></form></div>').appendTo('body');
+				
+				
+				
+				$("#jquery-tagbox-text").tagBox({
+					filename: text,
+					URI:uri
+				});
+				
 				if (opts.type === 'float') {
 					//This helps for some browsers
 					title.width(title.width());

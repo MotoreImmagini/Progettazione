@@ -34,8 +34,8 @@
       maxTagsErr: function(max_tags) { alert("A maximum of "+max_tags+" tags can be added!"); },
       beforeTagAdd: function(tag_to_add) {},
       afterTagAdd: function(added_tag) {},
-      filename: 'BG_35035_234361.mpg-1438.png',
-      URI: 'local://BG_35035_234361.mpg-1438.png',
+      filename: '',
+      URI: '',
     }
     
     if (options) {
@@ -168,7 +168,7 @@
   			var numTags= imageTags.length;
 
   			for(var i=0; i<numTags; i++){
-  				add_tag(imageTags[i]);
+  				add_first_tags(imageTags[i]);
   			};
   		}
 		
@@ -198,6 +198,19 @@
           }
         });
         $element.val(tags_list.join(options.separator));
+      }
+      
+      function add_first_tags(tag_items){
+      	var tags_list = get_current_tags_list();
+        var new_tag_items = tag_items.split(options.separator);
+        new_tag_items = jQuery.map(new_tag_items, function (item) { return jQuery.trim(item); });
+        tags_list = tags_list.concat(new_tag_items);
+        tags_list = jQuery.map( tags_list, function(item) { if(item != "") return item } );
+        if( tags_list.length > options.maxTags && options.maxTags != -1 ) {
+          options.maxTagsErr(options.maxTags);
+          return;
+        }
+        generate_tags_list(tags_list);
       }
       
       function add_tag(tag_items) {
