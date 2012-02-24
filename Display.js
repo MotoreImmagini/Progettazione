@@ -10,7 +10,7 @@ $.each(data.results, function(i,item){
 
 
 htmlString += '<li><a class="fancybox" title="' + item.filename + '" rel="group" href="' + item.link + '" target="_blank">';
-htmlString += '<img title="' + item.imageURI + '" src="' + item.thumbURL + '" height=37%' ;
+htmlString += '<img title="' + item.imageURI + '" src="' + item.link + '" height=37%' ;
 htmlString += '" alt="'; htmlString += item.title + '" />';
 htmlString += '</a></li>';
 
