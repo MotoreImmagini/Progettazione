@@ -157,13 +157,11 @@
   //  Methods
 	//qqq
 		function show_tags(data){
-			
   			var imageTags=[];
   			var i=0;
 			$(data).find('tag').each(function(){
 				imageTags[i]=$(this).text();
 				i++;
-				
   			}); 
   			var numTags= imageTags.length;
 

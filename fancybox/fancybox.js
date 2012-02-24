@@ -1384,7 +1384,9 @@
   					i++;
   						
 				});
+			
 				var uri=uris[F.current.index];
+				
 				
 				title = $('<div class="fancybox-title fancybox-title-' + opts.type + '-wrap"><form action="."><div class="row"><input type="text" id="jquery-tagbox-text" /></div></form></div>').appendTo('body');
 				
@@ -1392,7 +1394,7 @@
 				
 				$("#jquery-tagbox-text").tagBox({
 					filename: text,
-					URI:uri
+					URI: uri
 				});
 				
 				if (opts.type === 'float') {
