@@ -180,6 +180,10 @@ div#droppable {
 	margin: 50px 10px 0;
 }
 
+#similSearch {
+	margin-bottom: 5px;
+}
+
 .dropped{
 	position: relative;
 }
