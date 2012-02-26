@@ -160,10 +160,10 @@ input#tag {
 	position:relative;
 	width: 80%;
 }
-input#similarity {
-	font-family: "Trebuchet MS", Verdana, sans-serif;
-	font-size: 125%;
+p#similarity {
+	margin:0 auto;
 	position: relative;
+	padding-top:1px;
 	width: 70%;
 	height: 23%;
 }
