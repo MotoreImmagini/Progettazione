@@ -1372,25 +1372,34 @@
 				<input type="text" id="jquery-tagbox-text" />
 			</div>
 			</form>
+			
+			e anche 
+			<div id="similarity">
+				<input type="button" onclick="similaritySearch(uri, url)" value="Search By Similarity" />
+				
+			</div> 
 			*/
 			
 			if (text) {
 				uris= new Array();
+				urls=new Array();
 				var i=0;
 				$("a.fancybox img").each(function() {
   					var $this = $(this);
   					var filename=$this.parent().attr('title');
+  					urls[i]=$this.attr('src');
   					uris[i]=$this.attr('title');
   					i++;
   						
 				});
 			
 				var uri=uris[F.current.index];
+				var url=urls[F.current.index];
+		
 				
+				title = $('<div class="fancybox-title fancybox-title-' + opts.type + '-wrap"><div id="somiglianza" ><input type="button" value="Search By Similarity" /></div><form action="."><div class="row"><input type="text" id="jquery-tagbox-text" /></div></form></div>').appendTo('body');
 				
-				title = $('<div class="fancybox-title fancybox-title-' + opts.type + '-wrap"><form action="."><div class="row"><input type="text" id="jquery-tagbox-text" /></div></form></div>').appendTo('body');
-				
-				
+				$("#somiglianza").bind("click", {'uri': uri, 'url': url}, similaritySearch);
 				
 				$("#jquery-tagbox-text").tagBox({
 					filename: text,
