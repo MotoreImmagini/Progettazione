@@ -1397,7 +1397,7 @@
 				var url=urls[F.current.index];
 		
 				
-				title = $('<div class="fancybox-title fancybox-title-' + opts.type + '-wrap"><div id="somiglianza" ><input type="button" value="Search By Similarity" /></div><form action="."><div class="row"><input type="text" id="jquery-tagbox-text" /></div></form></div>').appendTo('body');
+				title = $('<div class="fancybox-title fancybox-title-' + opts.type + '-wrap"><div id="somiglianza" ><input id="similSearch" type="button" value="Search By Similarity" /></div><form action="."><div class="row"><input type="text" id="jquery-tagbox-text" /></div></form></div>').appendTo('body');
 				
 				$("#somiglianza").bind("click", {'uri': uri, 'url': url}, similaritySearch);
 				
