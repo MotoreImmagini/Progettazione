@@ -156,14 +156,13 @@ p.flip:hover, p.flip2:hover
 	color: #000000;
 	font-weight: bold;
 }
-input#autocomplete {
+input#tags {
 	position:relative;
 	width: 80%;
 }
 p#similarity {
 	margin:0 auto;
 	position: relative;
-	padding-top:1px;
 	width: 70%;
 	height: 23%;
 }
@@ -175,6 +174,10 @@ div#droppable {
 	border: 1px solid #444;
 	background-color: #F6f6f6;
 	color: #333;
+}
+
+#scritta {
+	margin: 50px 10px 0;
 }
 
 .dropped{

@@ -57,7 +57,7 @@
 				function getRandom() {
 					droppable=$("#droppable");
 					droppable.empty();
-					droppable.append('<b>DROP HERE<b>');
+					droppable.append('<b id="scritta">Open an image to search by similarity: thumbs will be placed here.</b>');
 					$.getJSON("http://shrek.micc.unifi.it:8080/daphnis/random?outfmt=JSON", displayImages);
 				}
 		</script>
@@ -80,7 +80,7 @@
 				<div id="tag-container">
 					<div class="panel">
 						<form>
-							<input id="autocomplete" type="text"><input type="button" onclick="RicercaTag()" value="→" />
+							<input id="tags" type="text"><input type="button" onclick="RicercaTag()" value="→" />
 						</form>
 					</div>
 					<p class="flip">Search by Tag</p>
@@ -93,7 +93,7 @@
 					<p class="random" onclick="getRandom()">Get random images</p>
 				</div>
 				<div id="drop-box">
-					<div id="droppable"><b>DROP HERE</b></div>
+					<div id="droppable"></div>
 					<p id="similarity">Search by Similarity</p>
 				</div>
 			</div>
