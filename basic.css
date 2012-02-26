@@ -176,3 +176,7 @@ div#droppable {
 	background-color: #F6f6f6;
 	color: #333;
 }
+
+.dropped{
+	position: relative;
+}

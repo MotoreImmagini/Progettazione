@@ -1,4 +1,8 @@
 function RicercaTag() {
+	droppable=$("#droppable");
+	droppable.empty();
+	droppable.append('<b>DROP HERE<b>');	
+	
 	valori = document.getElementById("autocomplete").value;
 	vettore= valori.split(" ");
 	tags= vettore.join(",");

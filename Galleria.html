@@ -3,6 +3,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<TITLE> Image search engine || search by tag, color and similarity </TITLE>
 		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
   		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
@@ -15,6 +16,8 @@
 		<script type="text/javascript" src="Colore.js"></script>
 		<script type="text/javascript" src="Tag.js"></script>
 		<script type="text/javascript" src="autocomplete.js"></script>
+		<script type="text/javascript" src="Similarity.js"></script>
+
 
  		<link rel="stylesheet" href="paginate/paginate.css" type="text/css" />
  		<link rel="stylesheet" href="basic.css" type="text/css" />
@@ -49,10 +52,12 @@
 				  });
 				  
 				getRandom();
-				
 				});
 				
 				function getRandom() {
+					droppable=$("#droppable");
+					droppable.empty();
+					droppable.append('<b>DROP HERE<b>');
 					$.getJSON("http://shrek.micc.unifi.it:8080/daphnis/random?outfmt=JSON", displayImages);
 				}
 		</script>

@@ -1,4 +1,8 @@
 			function RicercaColore() {
+				droppable=$("#droppable");
+				droppable.empty();
+				droppable.append('<b>DROP HERE<b>');
+				
 				hex= document.getElementById("colore").value;
 				d = convertiHEX(hex);
 				var parametri= 'color=' + d + '&outfmt=JSON';

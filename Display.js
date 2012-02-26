@@ -11,7 +11,7 @@ $.each(data.results, function(i,item){
 
 htmlString += '<li><a class="fancybox" title="' + item.filename + '" rel="group" href="' + item.link + '" target="_blank">';
 htmlString += '<img title="' + item.imageURI + '" src="' + item.link + '" height=37%' ;
-htmlString += '" alt="'; htmlString += item.title + '" />';
+htmlString += '" alt="'; htmlString += item.title + '" ondragstart="similaritySearch(event, this.title, this.src)"/>';
 htmlString += '</a></li>';
 
 
