@@ -1,7 +1,7 @@
 function RicercaTag() {
 	droppable=$("#droppable");
 	droppable.empty();
-	droppable.append('<b id="scritta">Open an image to search by similarity: thumbs will be placed here.</b>');	
+	droppable.append('<b id="scritta">Open an image to search by similarity: prewiew will be placed here.</b>');	
 	
 	valori = document.getElementById("tags").value;
 if (valori.substring(valori.length-2,valori.length)==', ') 
