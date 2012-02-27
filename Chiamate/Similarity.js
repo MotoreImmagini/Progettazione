@@ -1,12 +1,15 @@
 function similaritySearch(event){
 	var uri=event.data.uri;
 	var url=event.data.url;
+	$.fancybox.close( true );
+	
+	load();
 	
 	
 	var parametri= 'imageURI=' + uri + '&outfmt=JSON';
 	$.getJSON("http://shrek.micc.unifi.it:8080/daphnis/qbn?",parametri,displayImages);	
 	
-	$.fancybox.close( true );
+	
 	droppable=$("#droppable");
 	droppable.empty();
 		

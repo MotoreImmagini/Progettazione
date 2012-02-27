@@ -1,7 +1,8 @@
 			function RicercaColore() {
 				droppable=$("#droppable");
 				droppable.empty();
-				droppable.append('<b>DROP HERE<b>');
+				droppable.append('<b id="scritta">Open an image to search by similarity: thumbs will be placed here.</b>');
+				load();
 				
 				hex= document.getElementById("colore").value;
 				d = convertiHEX(hex);
