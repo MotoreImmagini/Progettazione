@@ -5,14 +5,14 @@ function RicercaTag() {
 	load();
 	
 	valori = document.getElementById("tags").value;
-if (valori.substring(valori.length-2,valori.length)==', ') 
-  {
-  valori= valori.substring(0,valori.length-2);
-  }
-  if (valori.substring(valori.length-1,valori.length)==',') 
-  {
-  valori= valori.substring(0,valori.length-1);
-  }
+	if (valori.substring(valori.length-2,valori.length)==', ') 
+	  {
+	  valori= valori.substring(0,valori.length-2);
+	  }
+	  if (valori.substring(valori.length-1,valori.length)==',') 
+	  {
+	  valori= valori.substring(0,valori.length-1);
+	  }
 	var parametri= 'tags=' + valori + '&outfmt=JSON';
 	$.getJSON("http://shrek.micc.unifi.it:8080/daphnis/qbt?",parametri,displayImages);
 }
