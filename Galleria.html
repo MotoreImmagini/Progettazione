@@ -9,14 +9,17 @@
   		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
   		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 
+		<script type="text/javascript" src="loading/blockUI.js"></script>
 		<script type="text/javascript" src="tagbox/tagbox.js"></script>
 		<script type="text/javascript" src="Display.js"></script>
  		<script type="text/javascript" src="fancybox/fancybox.js"></script>
 		<script type="text/javascript" src="paginate/easypaginate.js"></script>
-		<script type="text/javascript" src="Colore.js"></script>
-		<script type="text/javascript" src="Tag.js"></script>
-		<script type="text/javascript" src="autocomplete.js"></script>
-		<script type="text/javascript" src="Similarity.js"></script>
+		<script type="text/javascript" src="Chiamate/Colore.js"></script>
+		<script type="text/javascript" src="Chiamate/Tag.js"></script>
+		<script type="text/javascript" src="Chiamate/autocomplete.js"></script>
+		<script type="text/javascript" src="Chiamate/Similarity.js"></script>
+		<script type="text/javascript" src="Chiamate/loading.js"></script>
+
 
 
  		<link rel="stylesheet" href="paginate/paginate.css" type="text/css" />
@@ -50,7 +53,7 @@
 				$(".flip2").click(function(){
 				    $(".panel2").slideToggle("slow");
 				  });
-				  
+				
 				getRandom();
 				});
 				
@@ -58,6 +61,7 @@
 					droppable=$("#droppable");
 					droppable.empty();
 					droppable.append('<b id="scritta">Open an image to search by similarity: thumbs will be placed here.</b>');
+					load();
 					$.getJSON("http://shrek.micc.unifi.it:8080/daphnis/random?outfmt=JSON", displayImages);
 				}
 		</script>
