@@ -6,7 +6,7 @@ function load(){
             fadeIn: 0,
             css: { 
             	width: '10%',
-            	heigth: '15%',
+            	height: '15%',
             	top: '20%',
             	border: 'none', 
             	padding: '15px', 
